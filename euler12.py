@@ -3,6 +3,7 @@
 from datetime import datetime
 from math import ceil, sqrt
 
+
 n = 500
 
 
@@ -48,7 +49,7 @@ if __name__ == '__main__':
     start_time = datetime.now()
     triangle_number, i = 1, 1
     factors_long_time_number = factors_long_time(triangle_number)
-    if n <= 100:  # очень долгое решение полным перебором! Ограничитель
+    if n <= 150:  # очень долгое решение полным перебором! Ограничитель
         while len(factors_long_time_number) < n:
             i += 1
             triangle_number += i
