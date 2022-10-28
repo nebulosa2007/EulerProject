@@ -64,22 +64,23 @@ def product_multiply_diagonals(matrix, n):
     return max_product
 
 
-# 1 Вариант
-start_time = datetime.now()
-matrix = readmatrix("euler11.txt")
+if __name__ == '__main__':
+    # 1 Вариант
+    start_time = datetime.now()
+    matrix = readmatrix("euler11.txt")
 
-# Транспонирование матрицы
-matrix_transpose = [[0 for j in range(len(matrix))] for i in range(len(matrix[0]))]
-for i in range(len(matrix)):
-    for j in range(len(matrix[0])):
-        matrix_transpose[j][i] = matrix[i][j]
+    # Транспонирование матрицы
+    matrix_transpose = [[0 for j in range(len(matrix))] for i in range(len(matrix[0]))]
+    for i in range(len(matrix)):
+        for j in range(len(matrix[0])):
+            matrix_transpose[j][i] = matrix[i][j]
 
-print(max(product_multiply(matrix, n) + product_multiply(matrix_transpose, n) + [product_multiply_diagonals(matrix, n)]))
-print(datetime.now() - start_time)
+    print(max(product_multiply(matrix, n) + product_multiply(matrix_transpose, n) + [product_multiply_diagonals(matrix, n)]))
+    print(datetime.now() - start_time)
 
-# 2 Вариант
-start_time = datetime.now()
-matrix = array(readmatrix("euler11.txt"))
-matrix_transpose = matrix.transpose()
-print(max(product_multiply(matrix, n) + product_multiply(matrix_transpose, n) + [product_multiply_diagonals(matrix, n)]))
-print(datetime.now() - start_time)
+    # 2 Вариант
+    start_time = datetime.now()
+    matrix = array(readmatrix("euler11.txt"))
+    matrix_transpose = matrix.transpose()
+    print(max(product_multiply(matrix, n) + product_multiply(matrix_transpose, n) + [product_multiply_diagonals(matrix, n)]))
+    print(datetime.now() - start_time)

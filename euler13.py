@@ -60,5 +60,5 @@ if __name__ == '__main__':
             column_numbers.append(int(numbers[i][j * -1]))
         long_number[j - 1] = sum(column_numbers)
     print(long_number)
-    #print(sum_long_number(long_number))
+    # print(sum_long_number(long_number))
     print(datetime.now() - start_time)
