@@ -32,5 +32,7 @@ if __name__ == '__main__':
 
     # 2 Вариант
     start_time = datetime.now()
-    print(max([i * j for i in range(100,n) for j in range(100,n) if check_palindrom(str(i * j))]))
+    print(max([i * j for i in range(100, n)
+               for j in range(100, n)
+               if check_palindrom(str(i * j))]))
     print(datetime.now() - start_time)

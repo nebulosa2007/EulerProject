@@ -13,6 +13,7 @@ def primes():
         yield p
         ints = filter(p.__rmod__, ints)
 
+
 if __name__ == '__main__':
     # 1 Вариант
     start_time = datetime.now()

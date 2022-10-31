@@ -22,9 +22,9 @@ def loadfiletolist(filename, n=None):
     """
     n = None if isinstance(n, int) and count_lines_in_file(filename) < n else n
     with open(filename) as f:
-        return [row.rstrip('\n')
-            for row in f] if n is None \
-            else [next(f).rstrip('\n') for x in range(n)]
+        return [row.rstrip('\n') for row in f] 
+                if n is None else [next(f).rstrip('\n')
+                                   for x in range(n)]
 
 
 def sum_long_number(long_number):
@@ -34,7 +34,7 @@ def sum_long_number(long_number):
     for i in range(max_lenght):
         for j in list(str(long_number[i])):
             for k in range(len(j)):
-                long_num[max_lenght - k] = j[k] # !!! доделать сложение посимвольное
+                long_num[max_lenght - k] = j[k]  # доделать сложение символьное
     print(long_num)
     return None
 

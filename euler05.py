@@ -33,7 +33,10 @@ def multiply(number):
 def eratosfen_lists(number):
     # Генерация списка простых чисел на списках
     result = 1
-    for k in [x for x in range(2, number + 1) if x not in [i for sub in [list(range(2 * j, number + 1, j)) for j in range(2, number // 2)] for i in sub]]:
+    for k in [x for x in range(2, number + 1)
+              if x not in [i for sub in [list(range(2 * j, number + 1, j))
+                                         for j in range(2, number // 2)]
+                           for i in sub]]:
         i = 1
         while k ** (i + 1) < number:
             i += 1

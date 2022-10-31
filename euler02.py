@@ -30,7 +30,7 @@ if __name__ == '__main__':
     # 2 Вариант
     start_time = datetime.now()
     print(reduce(lambda x, y: x + y,
-        filter(lambda s: s % 2 == 0,
-            (takewhile(lambda f: f < n,
-                fibonacci())))))
+                 filter(lambda s: s % 2 == 0,
+                        (takewhile(lambda f: f < n,
+                                   fibonacci())))))
     print(datetime.now() - start_time)
