@@ -22,9 +22,7 @@ def loadfiletolist(filename, n=None):
     """
     n = None if isinstance(n, int) and count_lines_in_file(filename) < n else n
     with open(filename) as f:
-        return [row.rstrip('\n') for row in f] 
-                if n is None else [next(f).rstrip('\n')
-                                   for x in range(n)]
+        return [row.rstrip('\n') for row in f] if n is None else [next(f).rstrip('\n') for x in range(n)]
 
 
 def sum_long_number(long_number):
@@ -54,7 +52,7 @@ if __name__ == '__main__':
 
     # 2 вариант - todo, формирование числа через строку
     start_time = datetime.now()
-    long_number = {}  # Скорее всего нужно использовать кортежи (сумма, смещение)
+    long_number = {}  # Нужно использовать кортежи (сумма, смещение)
     for j in range(1, len(numbers[0]) + 1):
         for i in range(len(numbers)):
             column_numbers.append(int(numbers[i][j * -1]))
