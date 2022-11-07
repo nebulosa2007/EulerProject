@@ -5,8 +5,6 @@
 
 from datetime import datetime
 from functools import lru_cache
-# from numba import njit  # Почему-то работает медленнее..
-
 
 n = 1_000_000
 
