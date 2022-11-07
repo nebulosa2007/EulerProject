@@ -2,11 +2,13 @@
 
 from datetime import datetime
 from math import ceil, sqrt
+from functools import lru_cache
 
 
 n = 500
 
 
+@lru_cache(2 ** 20)
 def factors_long_time(number):
     divisor, divisor_list = 1, []
     while divisor <= number:
