@@ -10,8 +10,10 @@ n = 4
 
 def readmatrix(namefile):
     # Считывает из файла двумерную матрицу
-    f = open(namefile)
-    matrix = [line.replace("\n", "").split() for line in f]
+    matrix = []
+    with open(namefile) as f:
+        for line in f:
+            matrix.append([int(i) for i in line.rstrip('\n').split()])
     return matrix
 
 
@@ -23,7 +25,7 @@ def product_multiply(matrix, n):
         for j in range(len(matrix)):
             num = 1
             for k in range(n):
-                num *= int(matrix[j][i + k])
+                num *= matrix[j][i + k]
             product.append(num)
     return(product)
 
