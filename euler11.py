@@ -9,16 +9,20 @@ from euler08 import get_data
 n = 4
 
 
-def readmatrix(namefile=None, text=None):
+def readmatrix(namefile=None, text=None, mode=None):
     # Считывает из файла двумерную матрицу
     matrix = []
     if text is not None:
         for line in range(len(text)):
             matrix.append([int(i) for i in text[line].split(" ")])
-    else:
+    elif mode is None:
         with open(namefile) as f:
             for line in f:
                 matrix.append([int(i) for i in line.rstrip('\n').split()])
+    elif mode == 'text':
+        with open(namefile) as f:
+            for line in f:
+                matrix = line.replace('"', '').split(',')
     return matrix
 
 
