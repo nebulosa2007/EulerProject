@@ -4,16 +4,21 @@
 
 from datetime import datetime
 from numpy import array
+from euler08 import get_data
 
 n = 4
 
 
-def readmatrix(namefile):
+def readmatrix(namefile=None, text=None):
     # Считывает из файла двумерную матрицу
     matrix = []
-    with open(namefile) as f:
-        for line in f:
-            matrix.append([int(i) for i in line.rstrip('\n').split()])
+    if text is not None:
+        for line in range(len(text)):
+            matrix.append([int(i) for i in text[line].split(" ")])
+    else:
+        with open(namefile) as f:
+            for line in f:
+                matrix.append([int(i) for i in line.rstrip('\n').split()])
     return matrix
 
 
@@ -70,7 +75,6 @@ if __name__ == '__main__':
     # 1 Вариант
     start_time = datetime.now()
     matrix = readmatrix("euler11.txt")
-
     # Транспонирование матрицы
     matrix_transpose = [[0 for j in range(len(matrix))]
                         for i in range(len(matrix[0]))]
@@ -86,6 +90,16 @@ if __name__ == '__main__':
     # 2 Вариант
     start_time = datetime.now()
     matrix = array(readmatrix("euler11.txt"))
+    matrix_transpose = matrix.transpose()
+    print(max(product_multiply(matrix, n)
+              + product_multiply(matrix_transpose, n)
+              + [product_multiply_diagonals(matrix, n)]))
+    print(datetime.now() - start_time)
+
+    # 3 Вариант
+    start_time = datetime.now()
+    url = 'https://euler.jakumo.org/problems/view/11.html'
+    matrix = array(readmatrix(text=get_data(url, 'p', 1).strip().split("\n")))
     matrix_transpose = matrix.transpose()
     print(max(product_multiply(matrix, n)
               + product_multiply(matrix_transpose, n)

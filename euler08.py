@@ -4,8 +4,14 @@
 from functools import reduce
 from datetime import datetime
 from math import prod
+from bs4 import BeautifulSoup as bs
+from requests import get
 
 n = 13
+
+
+def get_data(url, tag, n):
+    return bs(get(url).text, 'lxml').find_all(tag)[n].text
 
 
 def multiply_numbers(*numset):
@@ -43,4 +49,11 @@ if __name__ == '__main__':
     # 2 Вариант
     start_time = datetime.now()
     print(max(prod(map(int, number[i:i + n])) for i in range(len(number) - n)))
+    print(datetime.now() - start_time)
+
+    # 3 Вариант
+    start_time = datetime.now()
+    url = 'https://euler.jakumo.org/problems/view/8.html'
+    text = list(get_data(url, 'p', 1).replace('\n', ''))
+    print(max(prod(map(int, text[i:i + n])) for i in range(len(text) - n)))
     print(datetime.now() - start_time)

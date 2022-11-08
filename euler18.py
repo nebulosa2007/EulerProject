@@ -3,6 +3,7 @@
 
 from datetime import datetime
 from euler11 import readmatrix
+from euler08 import get_data
 
 n = 15
 
@@ -23,5 +24,7 @@ if __name__ == '__main__':
 
     # 2 вариант
     start_time = datetime.now()
-    pass
+    url = 'https://euler.jakumo.org/problems/view/18.html'
+    matrix = readmatrix(text=get_data(url, 'p', 4).strip().split("\n"))
+    print(msu(matrix, n - 2))
     print(datetime.now() - start_time)

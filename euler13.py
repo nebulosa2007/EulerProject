@@ -2,6 +2,7 @@
 # Ответ: 5537376230
 
 from datetime import datetime
+from euler08 import get_data
 
 n = 100
 
@@ -53,6 +54,8 @@ if __name__ == '__main__':
     # 2 вариант - todo, формирование числа через строку
     start_time = datetime.now()
     long_number = {}  # Нужно использовать кортежи (сумма, смещение)
+    url = 'https://euler.jakumo.org/problems/view/13.html'
+    numbers = get_data(url, 'div', 9).strip().split("\n")
     for j in range(1, len(numbers[0]) + 1):
         for i in range(len(numbers)):
             column_numbers.append(int(numbers[i][j * -1]))
