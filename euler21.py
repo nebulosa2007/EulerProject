@@ -29,10 +29,10 @@ if __name__ == '__main__':
             divisorsum[j] += i
 
     # Поиск дружественных чисел и их суммирование
-    sum_amic_numbers = 0
+    sum_amic_pairs = 0
     for i in range(1, n):
         j = divisorsum[i]
         if j != i and j < n and divisorsum[j] == i:
-            sum_amic_numbers += i
-    print(sum_amic_numbers)
+            sum_amic_pairs += i
+    print(sum_amic_pairs)
     print(datetime.now() - start_time)
