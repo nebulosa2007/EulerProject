@@ -16,6 +16,6 @@ print(datetime.now() - start_time)
 # Вариант 2
 start_time = datetime.now()
 print(reduce(lambda x, y: x + y,
-            list(filter(lambda x: x % 3 == 0 or x % 5 == 0,
-                        list(range(n))))))
+             list(filter(lambda x: x % 3 == 0 or x % 5 == 0,
+                         list(range(n))))))
 print(datetime.now() - start_time)

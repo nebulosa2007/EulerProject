@@ -20,7 +20,7 @@ print(datetime.now() - start_time)
 # 2 Вариант
 start_time = datetime.now()
 print(reduce(lambda x, y: x + y,
-            filter(lambda s: s % 2 == 0,
+             filter(lambda s: s % 2 == 0,
                     (takewhile(lambda f: f < n,
-                            fibonacci())))))
+                               fibonacci())))))
 print(datetime.now() - start_time)

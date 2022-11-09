@@ -10,7 +10,7 @@ start_time = datetime.now()
 list_num = list(range(n + 1))
 print(reduce((lambda x, y: x + y), list_num) ** 2
       - reduce((lambda x, y: x + y),
-                  list(map(lambda x: x ** 2, list_num))))
+               list(map(lambda x: x ** 2, list_num))))
 print(datetime.now() - start_time)
 
 # 2 Вариант

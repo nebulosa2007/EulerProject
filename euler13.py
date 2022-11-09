@@ -12,7 +12,7 @@ sum_vertical, total, column_numbers = 0, 0, []
 for j in range(1, len(numbers[0]) + 1):
     for i in range(len(numbers)):
         sum_vertical += int(numbers[i][j * -1])
-    total += sum_vertical * (10 ** (j - 1)) 
+    total += sum_vertical * (10 ** (j - 1))
     sum_vertical, column_numbers = 0, []
 print(str(total)[0:10])
 print(datetime.now() - start_time)
