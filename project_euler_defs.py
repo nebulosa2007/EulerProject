@@ -66,7 +66,8 @@ def eratosfen(number):
 
 
 def eratosfen_lists(number):
-    """Решето Эратосфена: генерация списка простых чисел на списках до заданного числа"""
+    """Решето Эратосфена: генерация списка простых чисел на списках
+    до заданного числа"""
     result = 1
     for k in [x for x in range(2, number + 1)
               if x not in [i for sub in [list(range(2 * j, number + 1, j))
@@ -252,8 +253,9 @@ def collatz_recursion(number, counter):
         return collatz_recursion(3 * number + 1, counter + 1)
 
 
-#problem 15
+# problem 15
 memory = {(1, 0): 1, (0, 1): 1}
+
 
 @lru_cache(2 ** 20)
 def func(x, y):
@@ -307,7 +309,7 @@ def msu(rows, n_line):
     return rows[n_line][0] if len(rows[n_line]) == 1 else msu(rows, n_line - 1)
 
 
-#problem 19
+# problem 19
 def leap_year(year):
     """Проверяет високосный ли год"""
     if year % 100 == 0:
