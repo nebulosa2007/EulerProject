@@ -1,5 +1,5 @@
 from datetime import datetime
-from itertools import takewhile, islice, count
+from itertools import takewhile, islice, count, permutations
 from functools import reduce, lru_cache
 from re import fullmatch
 from math import prod, ceil, sqrt, factorial
@@ -302,7 +302,7 @@ def numerals(number):
 
 # problem 18
 def msu(rows, n_line):
-    """Возвращает максимальную сумму путипо треугольнику"""
+    """Возвращает максимальную сумму пути по треугольнику"""
     for i in range(len(rows[n_line])):
         rows[n_line][i] += max([rows[n_line + 1][i],
                                 rows[n_line + 1][i + 1]])
