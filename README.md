@@ -4,7 +4,7 @@
 
 # Настройка окружения и инструментарий: 
 
-[Точка входа](https://www.youtube.com/watch?v=P0czP5MEbYQ), показан некий roadmap при постановке задачи - обучение языку Питон. В данном видео предлагается установка PyCharm (тяжелая программа на Java), но я использую [Sublime Text] и [Sublime Merge](https://www.sublimemerge.com/) т.к. только это смогло заработать на Sway (+ pure Wayland). Для MacOSX рекомендую [VSCode](https://code.visualstudio.com/).
+[Точка входа](https://www.youtube.com/watch?v=P0czP5MEbYQ), показан некий roadmap при постановке задачи - обучение языку Питон. В данном видео предлагается установка [PyCharm]() (тяжелая программа на Java), но я использую [Sublime Text] и [Sublime Merge](https://www.sublimemerge.com/) т.к. только это смогло заработать на Sway (+ pure Wayland). Для MacOSX рекомендую [VSCode](https://code.visualstudio.com/).
 Для меня киллер-фича именно [Sublime Text] - то, что он сразу показывет проблемы в строках кода на несоотвествие [PEP8](https://pythonworld.ru/osnovy/pep-8-rukovodstvo-po-napisaniyu-koda-na-python.html). ОЧЕНЬ полезно для новичка и приучает сразу писать чистый и понятный код. 
 
 Единственно, что нужно сделать в Sublime это прикрутить интерактивную консоль Python: 
@@ -28,7 +28,7 @@
 + [Курс информатики на Python 3](https://mipt-cs.github.io/python3-2017-2018/)  - структурированная практика, для понимания решения типичных алгоритмов на языке
 + [2021 Анализ данных на Python](https://www.youtube.com/playlist?list=PLRDzFCPr95fIgPrFFW-0nXT5YH6ZnjRM6) - для закрепления материала.
 ## Канал Диджитализируй!
-+ [Python разработка]https://www.youtube.com/playlist?list=PLAk6CfuV7hyooMRqhHAO9-Gt6kOQqM_-Y
++ [Python разработка](https://www.youtube.com/playlist?list=PLAk6CfuV7hyooMRqhHAO9-Gt6kOQqM_-Y)
 ## Документация по языку Python3
 + [docs-python.ru](https://docs-python.ru/)
 
