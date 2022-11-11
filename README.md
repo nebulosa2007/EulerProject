@@ -4,7 +4,7 @@
 
 # Настройка окружения и инструментарий: 
 
-[Точка входа](https://www.youtube.com/watch?v=P0czP5MEbYQ), показан некий roadmap при постановке задачи - обучение языку Питон. В данном видео предлагается установка PyCharm (тяжелая программа на Java), но я использую [Sublime Text] и Sublime Merge т.к. только это смогло заработать на Sway (+ pure Wayland). Для MacOSX рекомендую [VSCode](https://code.visualstudio.com/)
+[Точка входа](https://www.youtube.com/watch?v=P0czP5MEbYQ), показан некий roadmap при постановке задачи - обучение языку Питон. В данном видео предлагается установка PyCharm (тяжелая программа на Java), но я использую [Sublime Text] и [Sublime Merge](https://www.sublimemerge.com/) т.к. только это смогло заработать на Sway (+ pure Wayland). Для MacOSX рекомендую [VSCode](https://code.visualstudio.com/).
 Для меня киллер-фича именно [Sublime Text] - то, что он сразу показывет проблемы в строках кода на несоотвествие [PEP8](https://pythonworld.ru/osnovy/pep-8-rukovodstvo-po-napisaniyu-koda-na-python.html). ОЧЕНЬ полезно для новичка и приучает сразу писать чистый и понятный код. 
 
 Единственно, что нужно сделать в Sublime это прикрутить интерактивную консоль Python: 
@@ -19,22 +19,27 @@
 
 
 # Материалы по языку Python
-
+## Лаборатория линуксоида
++ [younglinux.info](https://younglinux.info/) - Сборник курсов, в текстовом виде + видео 
 ## Питон в научных вычислениях
-+ [#](https://www.inp.nsk.su/~grozin/python/) Начиная с самых основ и вплоть до написания программ. Язык изложения и показывание практических примеров кода - решает.
-
-
++ [www.inp.nsk.su/~grozin/python](https://www.inp.nsk.su/~grozin/python/) Начиная с самых основ и вплоть до написания программ. Язык изложения и показывание практических примеров кода - решает.
 ## Лекции от Тимофея Хирьянова (МФТИ) 
 + [2017-2018 Алгоритмы и структуры данных на Python 3](https://www.youtube.com/playlist?list=PLRDzFCPr95fK7tr47883DFUbm4GeOjjc0) - Погружение в специфику языка через алгоритмику. Смотреть на скорости х2.
 + [Курс информатики на Python 3](https://mipt-cs.github.io/python3-2017-2018/)  - структурированная практика, для понимания решения типичных алгоритмов на языке
 + [2021 Анализ данных на Python](https://www.youtube.com/playlist?list=PLRDzFCPr95fIgPrFFW-0nXT5YH6ZnjRM6) - для закрепления материала.
-## Документация по языку Python3]
-+ [#](https://docs-python.ru/)
+## Канал Диджитализируй!
++ [Python разработка]https://www.youtube.com/playlist?list=PLAk6CfuV7hyooMRqhHAO9-Gt6kOQqM_-Y
+## Документация по языку Python3
++ [docs-python.ru](https://docs-python.ru/)
+
 
 # Прочее полезное:
+## Канал Диджитализируй!
++ [Linux и Unix инструменты]https://www.youtube.com/playlist?list=PLAk6CfuV7hyqHyQVHZMQRihAfebXpxn2O
 ## Pandas
 + [Чтение и запись файлов Excel (XLSX) на Python с помощью библиотеки Pandas](https://pythobyte.com/reading-and-writing-excel-files-in-python-with-the-pandas-library-8358adce/)
 + [Как автоматизировать подготовку отчетов по рекламе с помощью Python](https://ppc.world/articles/kak-ya-avtomatiziroval-podgotovku-30-otchetov-s-pomoschyu-python-i-sekonomil-12-chasov-v-nedelyu/)
++ [Анализ Данных на Python и Pandas](https://www.youtube.com/watch?v=dd3RcafdOQk)
 
 ## Бот телеграм
 + [Асинхронный Telegram бот на языке Python 3 с использованием библиотеки aiogram](https://surik00.gitbooks.io/aiogram-lessons/content/)
