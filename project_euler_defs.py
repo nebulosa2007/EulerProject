@@ -7,7 +7,7 @@ from numpy import array
 from bs4 import BeautifulSoup as bs
 from requests import get
 from calendar import monthrange
-
+from re import findall
 
 # problem 02
 def fibonacci(f1=0, f2=1):
@@ -355,3 +355,9 @@ def names_points(*names):
     return sum(sum(ord(j) - 64
                    for j in list(names[i])) * (i + 1)
                for i in range(len(names)))
+
+
+# problem 26
+def repeat_inside(text):
+    match = findall(r'(?=((.+?)\2+))', text)
+    return max((x[1] for x in match), key=len, default='')
