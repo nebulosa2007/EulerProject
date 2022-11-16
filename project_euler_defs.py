@@ -360,5 +360,12 @@ def names_points(*names):
 
 # problem 26
 def repeat_inside(text):
+    """Возвращает повторяющуюся подстроку через регулярные выражения"""
     match = findall(r'(?=((.+?)\2+))', text)
     return max((x[1] for x in match), key=len, default='')
+
+
+# problem 30
+def sum_power_of_digits(x, n):
+    """Возвращает сумму цифр в заданной степени"""
+    return sum(int(z) ** n for z in list(str(x)))
