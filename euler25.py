@@ -18,7 +18,7 @@ print(datetime.now() - start_time)
 
 # 2 вариант
 start_time = datetime.now()
-fb_counter = 0
+fb_counter=0
 for i in fibonacci():
     if len(str(i)) == n:
         break
