@@ -9,6 +9,7 @@ from requests import get
 from calendar import monthrange
 from re import findall
 
+
 # problem 02
 def fibonacci(f1=0, f2=1):
     """Итерируемая функция вычисления следующего числа Фибоначчи"""
