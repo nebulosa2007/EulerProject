@@ -369,3 +369,16 @@ def repeat_inside(text):
 def sum_power_of_digits(x, n):
     """Возвращает сумму цифр в заданной степени"""
     return sum(int(z) ** n for z in list(str(x)))
+
+
+# problem 31
+def num_sets(n, coins):
+    """Возвращает количество вариантов расстановки суммы n,
+    через список слагаемых coins"""
+    if n < 0:
+        return 0
+    if n == 0:
+        return 1
+    if len(coins) == 1:
+        return n % coins[0] == 0
+    return num_sets(n - coins[0], coins) + num_sets(n, coins[1:])
