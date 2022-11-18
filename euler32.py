@@ -8,7 +8,7 @@ n = 10
 
 # 1 вариант
 start_time = datetime.now()
-pan_numbers = {}
+pan_product = {}
 template = [_ for _ in range(1, n)]
 for a in range(99, 1, -1):
     for b in range(9999, 1, -1):
@@ -17,10 +17,10 @@ for a in range(99, 1, -1):
                                          + list(str(a * b)))]
         if (len(digits) == 9
             and digits == template
-                and a * b not in pan_numbers.values()):
-            pan_numbers[a, b] = a * b
+                and a * b not in pan_product.values()):
+            pan_product[a, b] = a * b
 else:
-    print(sum(sorted(pan_numbers.values())))
+    print(sum(sorted(pan_product.values())))
 print(datetime.now() - start_time)
 
 
