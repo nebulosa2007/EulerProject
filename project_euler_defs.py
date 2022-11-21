@@ -2,13 +2,12 @@ from datetime import datetime
 from itertools import takewhile, islice, count, permutations
 from functools import reduce, lru_cache
 from re import fullmatch
-from math import prod, ceil, sqrt, factorial
+from math import prod, ceil, sqrt, factorial, gcd
 from numpy import array
 from bs4 import BeautifulSoup as bs
 from requests import get
 from calendar import monthrange
 from re import findall
-
 
 # problem 02
 def fibonacci(f1=0, f2=1):
