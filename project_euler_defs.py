@@ -344,6 +344,7 @@ def counter_prime_weekday(year, weeknum):
 
 
 # problem 20
+@lru_cache(2 ** 5)
 def factorial_self(number):
     """Возвращает факториал заданного числа"""
     return reduce(lambda x, y: x * y, range(1, number + 1))
