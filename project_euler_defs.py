@@ -26,9 +26,15 @@ def isPrime_reg(n):
 @lru_cache(2 ** 5)
 def isprime(number: int):
     """Проверка числа на простоту перебором делителей"""
+    if number in {2, 3, 5, 7}:
+        return True
+    if number < 2 or number % 2 == 0:
+        return False
+    if number % 3 == 0 or number % 5 == 0:
+        return False
     a, k = number, 0
-    for i in range(2, a // 2 + 1):
-        k += 1 if a % i == 0 else 0
+    for i in range(5, int(number**0.5), 6):
+        k += 1 if a % i == 0 or a % (i + 2) == 0 else 0
     return True if k <= 0 else False
 
 
@@ -382,3 +388,14 @@ def num_sets(n, coins):
     if len(coins) == 1:
         return n % coins[0] == 0
     return num_sets(n - coins[0], coins) + num_sets(n, coins[1:])
+
+
+# problem 37
+def del_digit_left_or_right(number):
+    """Возвращает поочередно часть числа либо без правой,
+    либо без левой цифры"""
+    yield number
+    number_str = str(number)
+    for k in range(1, len(number_str)):
+        yield int(number_str[k:])
+        yield int(number_str[:-k])
