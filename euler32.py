@@ -15,9 +15,7 @@ for a in range(99, 1, -1):
         digits = [int(_) for _ in sorted(list(str(a))
                                          + list(str(b))
                                          + list(str(a * b)))]
-        if (len(digits) == 9
-            and digits == template
-                and a * b not in pan_product.values()):
+        if (digits == template and a * b not in pan_product.values()):
             pan_product[a, b] = a * b
 else:
     print(sum(sorted(pan_product.values())))
