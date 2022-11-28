@@ -19,5 +19,13 @@ print(datetime.now() - start_time)
 
 # 2 Вариант
 start_time = datetime.now()
-print(eratosfen_lists(n))
+result = 1
+for k in eratosfen_lists(n):
+    if k == 0:
+        continue
+    i = 1
+    while k ** (i + 1) < n:
+        i += 1
+    result *= k ** i
+print(result)
 print(datetime.now() - start_time)

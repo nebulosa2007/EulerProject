@@ -71,25 +71,24 @@ def eratosfen(number):
     return sieve
 
 
-def eratosfen_lists(number):
+def eratosfen_lists(number, dimension=None):
     """Решето Эратосфена: генерация списка простых чисел на списках
     до заданного числа"""
-    result = 1
-    for k in [x for x in range(2, number + 1)
+    start = 1 if dimension is None else dimension
+    sieve = []
+    for k in [x for x in range(10 ** (start - 1) + 1, number + 1)
               if x not in [i for sub in [list(range(2 * j, number + 1, j))
                                          for j in range(2, number // 2)]
                            for i in sub]]:
-        i = 1
-        while k ** (i + 1) < number:
-            i += 1
-        result *= k ** i
-    return result
+        sieve.append(k)
+    return sieve
 
 
 # problem 07
-def primes():
+def primes(dimension=None):
     """Итерируемая функция генерация простых чисел"""
-    ints = count(2)
+    start = 2 if dimension is None else 10 ** (dimension - 1) + 1
+    ints = count(start)
     while True:
         p = next(ints)
         yield p
