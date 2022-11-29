@@ -403,3 +403,13 @@ def del_digit_left_or_right(number):
 # problem 42
 def coded_triangle_number(number):
     return int(number * (number + 1) / 2)
+
+
+# problem 44
+def pentagonal_number(number):
+    return int(number * (3 * number - 1) / 2)
+
+
+def ispentagonal(number):
+    return (n_pentagonal := (
+        (24 * number + 1) ** 0.5 + 1) / 6) == int(n_pentagonal)
