@@ -398,3 +398,8 @@ def del_digit_left_or_right(number):
     for k in range(1, len(number_str)):
         yield int(number_str[k:])
         yield int(number_str[:-k])
+
+
+# problem 42
+def coded_triangle_number(number):
+    return int(number * (number + 1) / 2)
