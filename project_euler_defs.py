@@ -401,7 +401,7 @@ def del_digit_left_or_right(number):
 
 
 # problem 42
-def coded_triangle_number(number):
+def triangle_number(number):
     return int(number * (number + 1) / 2)
 
 
