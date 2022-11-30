@@ -401,15 +401,18 @@ def del_digit_left_or_right(number):
 
 
 # problem 42
-def triangle_number(number):
-    return int(number * (number + 1) / 2)
+def figurate_number(number, base=None):
+    return {
+        base == 3: int(number * (number + 1) / 2),
+        base == 5: int(number * (3 * number - 1) / 2),
+    }[True]
 
 
 # problem 44
-def pentagonal_number(number):
-    return int(number * (3 * number - 1) / 2)
-
-
-def ispentagonal(number):
-    return (n_pentagonal := (
-        (24 * number + 1) ** 0.5 + 1) / 6) == int(n_pentagonal)
+def isfigurate_number(number, base=None):
+    return {
+        base == 3: (n_pentagonal := (
+                    (8 * number + 1) ** 0.5 - 1) / 2) == int(n_pentagonal),
+        base == 5: (n_pentagonal := (
+                    (24 * number + 1) ** 0.5 + 1) / 6) == int(n_pentagonal)
+    }[True]

@@ -11,10 +11,11 @@ start_time = datetime.now()
 i, flag = 1, True
 while flag:
     i += 1
-    next_pent = pentagonal_number(i)
+    next_pent = figurate_number(i, 5)
     for j in range(i - 1, 0, -1):
-        result = next_pent - (prev_pent := pentagonal_number(j))
-        if ispentagonal(result) and ispentagonal(prev_pent + next_pent):
+        result = next_pent - (prev_pent := figurate_number(j, 5))
+        if (isfigurate_number(result, 5)
+                and isfigurate_number(prev_pent + next_pent, 5)):
             flag = False
             break
 print(result)
