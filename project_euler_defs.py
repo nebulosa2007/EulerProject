@@ -402,17 +402,15 @@ def del_digit_left_or_right(number):
 
 # problem 42
 def figurate_number(number, base=None):
-    return {
-        base == 3: int(number * (number + 1) / 2),
-        base == 5: int(number * (3 * number - 1) / 2),
-    }[True]
+    """ Возвращает number-ое многоугольное число по заданной базе угольности"""
+    assert base >= 3
+    return int(((base - 2) * number ** 2 - (base - 4) * number) / 2)
 
 
 # problem 44
-def isfigurate_number(number, base=None):
-    return {
-        base == 3: (n_pentagonal := (
-                    (8 * number + 1) ** 0.5 - 1) / 2) == int(n_pentagonal),
-        base == 5: (n_pentagonal := (
-                    (24 * number + 1) ** 0.5 + 1) / 6) == int(n_pentagonal)
-    }[True]
+def isfigurate_number(test_number, base=None):
+    """ Проверяет является ли число многоугольным по заданной базе
+    угольности"""
+    assert base >= 3
+    R = (8 * (base - 2) * test_number + (base - 4) ** 2) ** 0.5
+    return ((R + base - 4) / (2 * base - 4)) % 1 == 0
