@@ -414,3 +414,14 @@ def isfigurate_number(test_number, base=None):
     assert base >= 3
     R = (8 * (base - 2) * test_number + (base - 4) ** 2) ** 0.5
     return ((R + base - 4) / (2 * base - 4)) % 1 == 0
+
+
+# problem 49
+def twelve_digit(pan_primes_check):
+    for i in range(len(pan_primes_check)):
+        for j in range(i + 1, len(pan_primes_check)):
+            delta = pan_primes_check[j] - pan_primes_check[i]
+            if pan_primes_check[j] + delta in pan_primes_check:
+                return (str(pan_primes_check[i]) + str(pan_primes_check[j])
+                        + str(pan_primes_check[j] + delta))
+    return False
