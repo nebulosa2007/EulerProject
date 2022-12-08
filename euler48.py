@@ -26,3 +26,8 @@ for i in range(1, 1000):
 else:
     print(result)
 print(datetime.now() - start_time)
+
+# 3 вариант
+start_time = datetime.now()
+print(str(sum([_ ** _ for _ in range(1, 1000)]))[-n:])
+print(datetime.now() - start_time)
