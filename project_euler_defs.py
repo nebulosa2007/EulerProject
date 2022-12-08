@@ -186,20 +186,16 @@ def product_multiply_diagonals(matrix, n):
 
 
 # problem 12
-@lru_cache(2 ** 20)
-def factors_long_time(number):
+def all_factors_list(number):
     """Возвращает список делителей заданного числа"""
-    divisor, divisor_list = 1, []
-    while divisor <= number:
+    divisor, divisor_list = 2, [1, number]
+    while divisor <= ceil(sqrt(number)):
         if number % divisor == 0:
             divisor_list.append(divisor)
+            if divisor != (z := number // divisor):
+                divisor_list.append(z)
         divisor += 1
     return divisor_list
-
-
-def exact_square(number):
-    """Проверяет число на точность квадрата (есть целый корень)"""
-    return True if ceil(sqrt(number)) ** 2 == number else False
 
 
 def figurate_number(number, base=None):
@@ -208,7 +204,7 @@ def figurate_number(number, base=None):
     return int(((base - 2) * number ** 2 - (base - 4) * number) / 2)
 
 
-def defactoring(number):
+def count_divisors(number):
     """ Оптимальный алгоритм факторизации:
         1. Первоначальное количество делителей = 2
             (чтобы не перебирать 1 и само число)
@@ -219,17 +215,13 @@ def defactoring(number):
         4. Если число представляет собой точный квадрат (имеет
         целый корень) уменьшаем результирующее количество делителей на 1.
     """
-    natural_number, count_divisor = 2, 2
-    while count_divisor < number:
-        count_divisor = 2
-        triangle_number = figurate_number(natural_number, 3)
-        for i in range(2, ceil(sqrt(triangle_number))):
-            if triangle_number % i == 0:
-                count_divisor += 2
-        if exact_square(triangle_number):
-            count_divisor -= 1
-        natural_number += 1
-    return number if number == 1 or number == 2 else triangle_number
+    count = 2
+    for i in range(2, ceil(sqrt(number))):
+        if number % i == 0:
+            count += 2
+    if ceil(sqrt(number)) ** 2 == number:
+        count -= 1
+    return count
 
 
 # problem 13
