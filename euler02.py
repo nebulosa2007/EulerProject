@@ -7,13 +7,9 @@ n = 4_000_000
 
 # 1 Вариант
 start_time = datetime.now()
-odd_fb_sum = 0
-iterator = fibonacci()
-fb_num = next(iterator)
-while fb_num < n:
-    if fb_num % 2 == 0:
-        odd_fb_sum += fb_num
-    fb_num = next(iterator)
+odd_fb_sum, iterator = 0, fibonacci()
+while (fb_num := next(iterator)) < n:
+    odd_fb_sum += fb_num if fb_num % 2 == 0 else 0
 print(odd_fb_sum)
 print(datetime.now() - start_time)
 
