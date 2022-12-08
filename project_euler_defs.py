@@ -38,14 +38,13 @@ def isprime(number: int):
     return True if k <= 0 else False
 
 
-def maxcommondivisors(n):
-    """Возвращет список простых делителей заданного числа"""
+def prime_factors_list(n):
+    """Возвращет список простых множителей заданного числа"""
     divisor, nodarray = 2, []
     while divisor ** 2 <= n:
         if n % divisor == 0:
             n //= divisor
-            if isprime(divisor):
-                nodarray.append(divisor)
+            nodarray.append(divisor)
         else:
             divisor += 1
     if n != 1:
@@ -203,6 +202,12 @@ def exact_square(number):
     return True if ceil(sqrt(number)) ** 2 == number else False
 
 
+def figurate_number(number, base=None):
+    """ Возвращает number-ое многоугольное число по заданной базе угольности"""
+    assert base >= 3
+    return int(((base - 2) * number ** 2 - (base - 4) * number) / 2)
+
+
 def defactoring(number):
     """ Оптимальный алгоритм факторизации:
         1. Первоначальное количество делителей = 2
@@ -217,7 +222,7 @@ def defactoring(number):
     natural_number, count_divisor = 2, 2
     while count_divisor < number:
         count_divisor = 2
-        triangle_number = sum([c for c in range(1, natural_number + 1)])
+        triangle_number = figurate_number(natural_number, 3)
         for i in range(2, ceil(sqrt(triangle_number))):
             if triangle_number % i == 0:
                 count_divisor += 2
@@ -398,13 +403,6 @@ def del_digit_left_or_right(number):
     for k in range(1, len(number_str)):
         yield int(number_str[k:])
         yield int(number_str[:-k])
-
-
-# problem 42
-def figurate_number(number, base=None):
-    """ Возвращает number-ое многоугольное число по заданной базе угольности"""
-    assert base >= 3
-    return int(((base - 2) * number ** 2 - (base - 4) * number) / 2)
 
 
 # problem 44

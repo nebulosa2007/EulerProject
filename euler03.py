@@ -7,7 +7,7 @@ n = 600_851_475_143
 
 # 1 вариант
 start_time = datetime.now()
-print(max(maxcommondivisors(n)))
+print(max([_ for _ in prime_factors_list(n)]))
 print(datetime.now() - start_time)
 
 # 2 вариант
