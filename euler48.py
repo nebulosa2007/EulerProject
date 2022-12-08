@@ -2,7 +2,7 @@
 
 from project_euler_defs import *
 
-n = 1000
+n = 10
 
 # 1 вариант
 start_time = datetime.now()
@@ -10,14 +10,13 @@ long_number = 0
 for i in range(1, 1000):
     long_number += i ** i
 else:
-    print(str(long_number)[-10:])
+    print(str(long_number)[-n:])
 print(datetime.now() - start_time)
 
 # 2 вариант
 start_time = datetime.now()
-result = 0
-long_number = 10 ** 10  # степень - количество искомых последних цифр
-for i in range(1, n):
+result, long_number = 0, 10 ** n
+for i in range(1, 1000):
     temp = i
     for j in range(1, i):
         temp *= i
