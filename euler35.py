@@ -15,8 +15,7 @@ for i in primes:
     next_num, circular_primes_check, power = i, [i], len(str(i)) - 1
     for _ in range(power):
         next_num = next_num % 10 * 10 ** power + next_num // 10
-        if next_num in primes:
-            circular_primes_check.append(next_num)
+        if next_num in primes: circular_primes_check.append(next_num)
         else:
             circular_primes_check = []
             break
@@ -39,14 +38,12 @@ while i * i <= n:
 primes_bool[0] = primes_bool[1] = False
 count = 0
 for i in range(1, n + 1):
-    if primes_bool[i] is False:
-        continue
+    if primes_bool[i] is False: continue
     next_num, flag = str(i), True
     for _ in next_num:
         next_num = next_num[1:] + next_num[0]
         flag &= primes_bool[int(next_num)]
-    if flag:
-        count += 1
+    if flag: count += 1
 else:
     print(count)
 

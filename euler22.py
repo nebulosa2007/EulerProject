@@ -14,9 +14,7 @@ print(datetime.now() - start_time)
 
 # 2 вариант
 start_time = datetime.now()
-response = get(n, timeout=3)
-if response.status_code != 200:
-    exit()
+if (response := get(n, timeout=3)).status_code != 200: exit()
 names = sorted(response.content.decode().replace('"', '').split(','))
 print(names_points(*names))
 print(datetime.now() - start_time)

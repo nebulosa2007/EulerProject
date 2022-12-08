@@ -12,8 +12,7 @@ for z in range(n, 1, -1):
                         for x in list(permutations(
                                       [_ for _ in range(1, z + 1)], z))
                         if isprime(int(''.join(str(_) for _ in x)))]
-    if pan_primes_check != []:
-        pan_primes.append(max(pan_primes_check))
+    if pan_primes_check != []: pan_primes.append(max(pan_primes_check))
 else:
     print(max(pan_primes))
 print(datetime.now() - start_time)

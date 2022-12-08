@@ -8,8 +8,7 @@ n = 1_000
 start_time = datetime.now()
 sum = 0
 for i in range(n):
-    if i % 3 == 0 or i % 5 == 0:
-        sum += i
+    if i % 3 == 0 or i % 5 == 0: sum += i
 print(sum)
 print(datetime.now() - start_time)
 

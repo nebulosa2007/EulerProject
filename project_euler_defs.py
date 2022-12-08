@@ -26,12 +26,9 @@ def isPrime_reg(n):
 @lru_cache(2 ** 5)
 def isprime(number: int):
     """Проверка числа на простоту перебором делителей"""
-    if number in {2, 3, 5, 7}:
-        return True
-    if number < 2 or number % 2 == 0:
-        return False
-    if number % 3 == 0 or number % 5 == 0:
-        return False
+    if number in {2, 3, 5, 7}: return True
+    if number < 2 or number % 2 == 0: return False
+    if number % 3 == 0 or number % 5 == 0: return False
     a, k = number, 0
     for i in range(5, int(number**0.5), 6):
         k += 1 if a % i == 0 or a % (i + 2) == 0 else 0
@@ -45,10 +42,8 @@ def prime_factors_list(n):
         if n % divisor == 0:
             n //= divisor
             nodarray.append(divisor)
-        else:
-            divisor += 1
-    if n != 1:
-        nodarray.append(n)
+        else: divisor += 1
+    if n != 1: nodarray.append(n)
     return nodarray
 
 
@@ -110,12 +105,8 @@ def loadfiletolistnumbers(namefile):
     number = []
     with open(namefile) as f:
         while True:
-            c = f.read(1)
-            if c == '':
-                break
-            else:
-                if c != '\n':
-                    number.append(c)
+            if (c := f.read(1)) == '': break
+            elif c != '\n': number.append(c)
     return number
 
 
@@ -159,29 +150,25 @@ def product_multiply_diagonals(matrix, n):
             num = 1
             for i in range(n):
                 num *= int(matrix[x + i][y + i])
-            if num > max_product:
-                max_product = num
+            if num > max_product: max_product = num
 
             # по диагонали вправо вверх
             num = 1
             for i in range(n):
                 num *= int(matrix[x - i][y + i])
-            if num > max_product:
-                max_product = num
+            if num > max_product: max_product = num
 
             # по диагонали влево вниз
             num = 1
             for i in range(n):
                 num *= int(matrix[x + i][y - i])
-            if num > max_product:
-                max_product = num
+            if num > max_product: max_product = num
 
             # по диагонали влево вверх
             num = 1
             for i in range(n):
                 num *= int(matrix[x - i][y - i])
-            if num > max_product:
-                max_product = num
+            if num > max_product: max_product = num
     return max_product
 
 
@@ -192,8 +179,7 @@ def all_factors_list(number):
     while divisor <= ceil(sqrt(number)):
         if number % divisor == 0:
             divisor_list.append(divisor)
-            if divisor != (z := number // divisor):
-                divisor_list.append(z)
+            if divisor != (z := number // divisor): divisor_list.append(z)
         divisor += 1
     return divisor_list
 
@@ -217,10 +203,8 @@ def count_divisors(number):
     """
     count = 2
     for i in range(2, ceil(sqrt(number))):
-        if number % i == 0:
-            count += 2
-    if ceil(sqrt(number)) ** 2 == number:
-        count -= 1
+        if number % i == 0: count += 2
+    if ceil(sqrt(number)) ** 2 == number: count -= 1
     return count
 
 
@@ -247,12 +231,9 @@ def collatz(number: int):
 
 def collatz_recursion(number, counter):
     """Возвращает счётчик шагов итого в рекурсивном алгоритме Коллатца"""
-    if number == 1:
-        return counter
-    if number % 2 == 0:
-        return collatz_recursion(int(number / 2), counter + 1)
-    else:
-        return collatz_recursion(3 * number + 1, counter + 1)
+    if number == 1: return counter
+    if number % 2 == 0: return collatz_recursion(int(number / 2), counter + 1)
+    else: return collatz_recursion(3 * number + 1, counter + 1)
 
 
 # problem 15
@@ -263,12 +244,9 @@ memory = {(1, 0): 1, (0, 1): 1}
 def func(x, y):
     """Возвращает словарь/матрицу весов путей"""
     if (x, y) not in memory:
-        if x == 0:
-            memory[(x, y)] = func(x, y - 1)
-        elif y == 0:
-            memory[(x, y)] = func(x - 1, y)
-        else:
-            memory[(x, y)] = func(x - 1, y) + func(x, y - 1)
+        if x == 0: memory[(x, y)] = func(x, y - 1)
+        elif y == 0: memory[(x, y)] = func(x - 1, y)
+        else: memory[(x, y)] = func(x - 1, y) + func(x, y - 1)
     return memory[(x, y)]
 
 
@@ -312,30 +290,25 @@ def msu(rows, n_line):
 
 
 # problem 19
-def leap_year(year):
+def isleap_year(year):
     """Проверяет високосный ли год"""
-    if year % 100 == 0:
-        return True if year % 400 == 0 else False
+    if year % 100 == 0: return True if year % 400 == 0 else False
     return True if year % 4 == 0 else False
 
 
 def counter_prime_weekday(year, weeknum):
-    """Возвращает список количества дней в месяце, с 1900 года вплоть до year
-    затем считает совпадения заданного дня недели с 1 днём месяца"""
+    """Возвращает список количества дней в месяце, c 1900 года вплоть до year
+    затем считает совпадения заданного дня недели c 1 днём месяца"""
     assert year >= 1900 and weeknum >= 1 and weeknum <= 7
     month30 = [4, 6, 9, 11]
     febrary = {'standard': 28, 'leap': 29}
-    days_month = []
-    sum_days = []
+    days_month,  sum_days = [], []
     for year in range(1900, year + 1):
-        year_type = 'leap' if leap_year(year) else 'standard'
+        year_type = 'leap' if isleap_year(year) else 'standard'
         for month in range(1, 13):
-            if month in month30:
-                days_month.append(30)
-            elif month == 2:
-                days_month.append(febrary[year_type])
-            else:
-                days_month.append(31)
+            if month in month30: days_month.append(30)
+            elif month == 2: days_month.append(febrary[year_type])
+            else: days_month.append(31)
         sum_days += days_month
         days_month = []
     alldays = counter_prime = 0
@@ -377,13 +350,43 @@ def sum_power_of_digits(x, n):
 def num_sets(n, coins):
     """Возвращает количество вариантов расстановки суммы n,
     через список слагаемых coins"""
-    if n < 0:
-        return 0
-    if n == 0:
-        return 1
-    if len(coins) == 1:
-        return n % coins[0] == 0
+    if n < 0: return 0
+    if n == 0: return 1
+    if len(coins) == 1: return n % coins[0] == 0
     return num_sets(n - coins[0], coins) + num_sets(n, coins[1:])
+
+# problem 32
+def sqrt(x):
+    """Возвращает максимально близкое число к корню от x"""
+    assert x >= 0
+    i = 1
+    while i * i <= x:
+        i *= 2
+    y = 0
+    while i > 0:
+        if (y + i) ** 2 <= x: y += i
+        i //= 2
+    return y
+
+
+def ispandigital_product(n):
+    """Проверяет произведение на пан-цифры"""
+    for i in range(1, sqrt(n) + 1):
+        if n % i == 0:
+            temp = str(n) + str(i) + str(n // i)
+            if "".join(sorted(temp)) == "123456789":
+                return True
+    return False
+
+
+# problem 34
+def factorial_digit_sum(n, with_zeroes, without_zeroes):
+    """Возвращет сумму списков факториалов"""
+    result = 0
+    while n >= 10_000:
+        result += with_zeroes[n % 10_000]
+        n //= 10_000
+    return result + without_zeroes[n]
 
 
 # problem 37

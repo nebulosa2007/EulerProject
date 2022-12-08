@@ -12,10 +12,8 @@ for p in range(2, n + 1, 2):
     counter_triplets = 0
     for a in range(1, p):
         for b in range(a, p - a):
-            if a * a + b * b == (p - a - b) * (p - a - b):
-                counter_triplets += 1
-    if counter_triplets:
-        perimeter[p] = counter_triplets
+            if a * a + b * b == (p - a - b) * (p - a - b): counter_triplets += 1
+    if counter_triplets: perimeter[p] = counter_triplets
 print({k: v for k, v in perimeter.items() if v == max(perimeter.values())})
 print(datetime.now() - start_time)
 

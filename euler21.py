@@ -9,8 +9,8 @@ start_time = datetime.now()
 amicable_pairs = []
 for x in range(10, n):
     if x not in amicable_pairs:
-        x_sum_divisors = sum(factors_long_time(x)[:-1])
-        y_sum_divisors = sum(factors_long_time(x_sum_divisors)[:-1])
+        x_sum_divisors = sum(all_factors_list(x)) - x
+        y_sum_divisors = sum(all_factors_list(x_sum_divisors)) - x_sum_divisors
         if y_sum_divisors == x and x != x_sum_divisors:
             amicable_pairs.append(x)
             amicable_pairs.append(x_sum_divisors)
@@ -29,7 +29,6 @@ for i in range(1, n):
 sum_amic_pairs = 0
 for i in range(1, n):
     j = divisorsum[i]
-    if j != i and j < n and divisorsum[j] == i:
-        sum_amic_pairs += i
+    if j != i and j < n and divisorsum[j] == i: sum_amic_pairs += i
 print(sum_amic_pairs)
 print(datetime.now() - start_time)

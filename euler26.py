@@ -6,7 +6,7 @@ from project_euler_defs import *
 n = 1_000
 
 # 1 вариант
-"""с обычной точностью ответ - неверный. Показан в качестве
+"""c обычной точностью ответ - неверный. Показан в качестве
 вариантов поиска подстрок, более частая задача в Питоне"""
 start_time = datetime.now()
 patterns = []
@@ -31,8 +31,7 @@ for x in range(1, n + 1):
 
 max_period, denominator = ans[1], 1
 for x in ans:
-    if ans[x] > max_period:
-        max_period, denominator = ans[x], x
+    if ans[x] > max_period: max_period, denominator = ans[x], x
 else:
     print(denominator, max_period)
 # or

@@ -10,8 +10,7 @@ start_time = datetime.now()
 powers = []
 for a in range(2, n + 1):
     for b in range(2, n + 1):
-        if (x := a ** b) not in powers:
-            powers.append(x)
+        if (x := a ** b) not in powers: powers.append(x)
 print(len(powers))
 print(datetime.now() - start_time)
 

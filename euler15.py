@@ -14,7 +14,8 @@ start_time = datetime.now()
 counter = 1
 for _ in range(20):
     counter = counter * (40 - _) // (1 + _)
-print(counter)
+else: 
+    print(counter)
 print(datetime.now() - start_time)
 
 # 3 вариант
@@ -27,9 +28,7 @@ start_time = datetime.now()
 dp = {(0, 0): 1}
 for i in range(n + 1):
     for j in range(n + 1):
-        if i == 0 or j == 0:
-            dp[(i, j)] = 1
-        else:
-            dp[(i, j)] = dp[(i - 1, j)] + dp[(i, j - 1)]
+        if i == 0 or j == 0: dp[(i, j)] = 1
+        else: dp[(i, j)] = dp[(i - 1, j)] + dp[(i, j - 1)]
 print(dp[(n, n)])
 print(datetime.now() - start_time)

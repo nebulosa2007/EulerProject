@@ -10,8 +10,7 @@ start_time = datetime.now()
 num_list = []
 for x in range(2, n * 9 ** n):
     narciss_numbers = sum_power_of_digits(x, n)
-    if narciss_numbers == x:
-        num_list.append(x)
+    if narciss_numbers == x: num_list.append(x)
 print(sum(num_list))
 print(datetime.now() - start_time)
 

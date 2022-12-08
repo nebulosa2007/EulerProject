@@ -13,8 +13,7 @@ start_time = datetime.now()
 denominator_product, nominator_product = 1, 1
 for denominator in range(10, n):
     for nominator in range(10, denominator):
-        if nominator % 10 == 0 and denominator % 10 == 0:
-            continue
+        if nominator % 10 == 0 and denominator % 10 == 0: continue
         nominator_list = list(str(nominator))
         denominator_list = list(str(denominator))
         common = set(nominator_list[0] if nominator_list in denominator_list
@@ -23,8 +22,7 @@ for denominator in range(10, n):
         if common != set():
             nominator_list = set(nominator_list[0]) if (x := set(nominator_list) - common) == set() else x
             denominator_list = set(denominator_list[0]) if (y := set(denominator_list) - common) == set() else y
-            if denominator_list == {'0'}:
-                continue
+            if denominator_list == {'0'}: continue
             if nominator / denominator == int(nominator_list.pop()) / int(denominator_list.pop()):
                 nominator_product *= nominator
                 denominator_product *= denominator

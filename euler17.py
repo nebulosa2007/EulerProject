@@ -3,14 +3,12 @@
 
 from project_euler_defs import *
 
-n = 1000
+n = 1_000
 
 # 1 вариант
 start_time = datetime.now()
-sum_symbols = 0
-for x in range(1, n + 1):
-    sum_symbols += len(''.join(numerals(x)))
-print("From 1 to", x, "sum symbols is:", sum_symbols)
+print(f'From 1 to {n} sum symbols is:',
+      sum(len(''.join(numerals(x))) for x in range(1, n + 1)))
 print(datetime.now() - start_time)
 
 # 2 вариант

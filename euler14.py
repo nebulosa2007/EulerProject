@@ -15,10 +15,9 @@ for number in range(3, n):
     while x != 2:
         counter += 1
         x = collatz(x)
-    if max_counter < counter:
-        max_counter, winner = counter, number
+    if max_counter < counter: max_counter, winner = counter, number
     counter = 2
-print(winner, ": ", max_counter)
+print(f'{winner} : {max_counter}')
 print(datetime.now() - start_time)
 
 # 2 вариант
@@ -26,9 +25,8 @@ start_time = datetime.now()
 counter = max_counter = winner = 0
 for i in range(13, n):
     counter = collatz_recursion(i, 1)
-    if counter > max_counter:
-        winner, max_counter = i, counter
-print(winner, ": ", max_counter)
+    if counter > max_counter: winner, max_counter = i, counter
+print(f'{winner} : {max_counter}')
 print(datetime.now() - start_time)
 
 # 3 вариант
@@ -44,7 +42,6 @@ for number in range(1, n):
             break
         counter += 1
     known_collatz[number] = counter
-    if counter > max_counter:
-        max_counter, winner = counter, number
-print(winner, ": ", max_counter)
+    if counter > max_counter: max_counter, winner = counter, number
+print(f'{winner} : {max_counter}')
 print(datetime.now() - start_time)

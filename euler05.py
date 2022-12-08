@@ -19,8 +19,7 @@ print(datetime.now() - start_time)
 start_time = datetime.now()
 result = 1
 for k in range(n + 1):
-    if isprime(k):
-        result *= k ** max([_ for _ in range(n // 2) if k ** _ < n])
+    if isprime(k): result *= k ** max([_ for _ in range(n // 2) if k ** _ < n])
 else:
     print(result)
 print(datetime.now() - start_time)

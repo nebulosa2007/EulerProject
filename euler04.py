@@ -10,8 +10,7 @@ start_time = datetime.now()
 pol = []
 for i in range(100, n):
     for j in range(100, n):
-        if check_palindrom(str(i * j)):
-            pol.append(i * j)
+        if check_palindrom(str(i * j)): pol.append(i * j)
 print(max(pol))
 print(datetime.now() - start_time)
 
