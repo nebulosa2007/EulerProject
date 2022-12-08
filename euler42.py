@@ -9,22 +9,13 @@ n = "https://projecteuler.net/project/resources/p042_words.txt"
 
 # 1 вариант
 start_time = datetime.now()
-words = readmatrix("euler42.txt", mode='text')
-max_n = len(max(words, key=len)) * (ord('Z') - 64)
-triangle_numbers = [figurate_number(_, 3) for _ in range(1, max_n + 1)]
-triangle_words = []
-for i in words:
-    sum_letters = sum(ord(_) - 64 for _ in i)
-    if sum_letters in triangle_numbers:
-        triangle_words.append(i)
-else:
-    print(len(triangle_words))
+print(len([_ for _ in readmatrix("euler42.txt", mode='text')
+           if isfigurate_number(sum(ord(x) - 64 for x in _), 3)]))
 print(datetime.now() - start_time)
 
 # 2 вариант
-start_time = datetime.now()
-response = get(n, timeout=3)
-if response.status_code != 200:
+start_time = datetime.now() 
+if (response := get(n, timeout=3)).status_code != 200:
     exit()
 words = response.content.decode().replace('"', '').split(',')
 max_n = 0
