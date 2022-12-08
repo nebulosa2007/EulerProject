@@ -6,10 +6,14 @@ n = 10_001
 
 # 1 Вариант
 start_time = datetime.now()
-print(list(islice(primes(), n))[-1])
+number = primes()
+for i in range(n):
+    prime = next(number)
+else:
+    print(prime)
 print(datetime.now() - start_time)
 
 # 2 Вариант
 start_time = datetime.now()
-pass
+print(list(islice(primes(), n))[-1])
 print(datetime.now() - start_time)
