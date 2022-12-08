@@ -7,9 +7,7 @@ n = 20
 # 1 Вариант
 start_time = datetime.now()
 result = 1
-for k in eratosfen(n):
-    if k == 0:
-        continue
+for k in set(eratosfen(n)) - {0}:
     i = 1
     while k ** (i + 1) < n:
         i += 1
@@ -20,12 +18,9 @@ print(datetime.now() - start_time)
 # 2 Вариант
 start_time = datetime.now()
 result = 1
-for k in eratosfen_lists(n):
-    if k == 0:
-        continue
-    i = 1
-    while k ** (i + 1) < n:
-        i += 1
-    result *= k ** i
-print(result)
+for k in range(n + 1):
+    if isprime(k):
+        result *= k ** max([_ for _ in range(n // 2) if k ** _ < n])
+else:
+    print(result)
 print(datetime.now() - start_time)
