@@ -173,25 +173,9 @@ def product_multiply_diagonals(matrix, n):
 
 
 # problem 12
-def all_factors_list(number):
-    """Возвращает список делителей заданного числа"""
-    divisor, divisor_list = 2, [1, number]
-    while divisor <= ceil(sqrt(number)):
-        if number % divisor == 0:
-            divisor_list.append(divisor)
-            if divisor != (z := number // divisor): divisor_list.append(z)
-        divisor += 1
-    return divisor_list
-
-
-def figurate_number(number, base=None):
-    """ Возвращает number-ое многоугольное число по заданной базе угольности"""
-    assert base >= 3
-    return int(((base - 2) * number ** 2 - (base - 4) * number) / 2)
-
-
-def count_divisors(number):
-    """ Оптимальный алгоритм факторизации:
+def all_factors_list(number, justcount=False):
+    """Возвращает список делителей заданного числа, либо количество делителей
+        Оптимальный алгоритм факторизации:
         1. Первоначальное количество делителей = 2
             (чтобы не перебирать 1 и само число)
         2. Делители рассматриваем в промежутке
@@ -201,11 +185,24 @@ def count_divisors(number):
         4. Если число представляет собой точный квадрат (имеет
         целый корень) уменьшаем результирующее количество делителей на 1.
     """
-    count = 2
+    divisor, divisor_list = 2, [1, number]
     for i in range(2, ceil(sqrt(number))):
-        if number % i == 0: count += 2
-    if ceil(sqrt(number)) ** 2 == number: count -= 1
-    return count
+        if number % i == 0:
+            if justcount:
+                divisor += 2
+            else: 
+                divisor_list.append(i)
+                divisor_list.append(number // i)
+    if justcount:
+        return divisor - 1 if ceil(sqrt(number)) ** 2 == number else divisor
+    else:
+        return divisor_list[:-1] if ceil(sqrt(number)) ** 2 == number else divisor_list
+
+
+def figurate_number(number, base=None):
+    """ Возвращает number-ое многоугольное число по заданной базе угольности"""
+    assert base >= 3
+    return int(((base - 2) * number ** 2 - (base - 4) * number) / 2)
 
 
 # problem 13
