@@ -8,9 +8,9 @@ n = 143
 
 # 1 вариант
 start_time = datetime.now()
-test_number = figurate_number(i := n + 1, 6)
+test_number = figurate_number(i := n + 1, base=6)
 while not isfigurate_number(test_number, 5):
-    test_number = figurate_number(i := i + 1, 6)
+    test_number = figurate_number(i := i + 1, base=6)
 print(figurate_number(i * 2 - 1, 3))
 print(datetime.now() - start_time)
 
