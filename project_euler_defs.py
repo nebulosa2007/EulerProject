@@ -206,7 +206,7 @@ def figurate_number(number, base=None):
 
 
 # problem 13
-def sum_long_number(long_number):
+def sum_long_number_old(long_number):
     """Посимвольное сложение - todo!! """
     max_key = max(x for x in long_number)
     max_lenght = max_key + len(str(long_number[max_key]))
