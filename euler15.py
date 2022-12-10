@@ -12,8 +12,8 @@ print(datetime.now() - start_time)
 # 2 вариант
 start_time = datetime.now()
 counter = 1
-for _ in range(20):
-    counter = counter * (40 - _) // (1 + _)
+for _ in range(n):
+    counter = counter * (2 * n - _) // (1 + _)
 else: 
     print(counter)
 print(datetime.now() - start_time)

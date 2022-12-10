@@ -186,7 +186,7 @@ def all_factors_list(number, justcount=False):
         целый корень) уменьшаем результирующее количество делителей на 1.
     """
     divisor, divisor_list = 2, [1, number]
-    for i in range(2, ceil(sqrt(number))):
+    for i in range(2, ceil(sqrt(number)) + 1):
         if number % i == 0:
             if justcount:
                 divisor += 2
@@ -203,20 +203,6 @@ def figurate_number(number, base=None):
     """ Возвращает number-ое многоугольное число по заданной базе угольности"""
     assert base >= 3
     return int(((base - 2) * number ** 2 - (base - 4) * number) / 2)
-
-
-# problem 13
-def sum_long_number_old(long_number):
-    """Посимвольное сложение - todo!! """
-    max_key = max(x for x in long_number)
-    max_lenght = max_key + len(str(long_number[max_key]))
-    long_num = [0 for x in range(max_lenght + 1)]
-    for i in range(max_lenght):
-        for j in list(str(long_number[i])):
-            for k in range(len(j)):
-                long_num[max_lenght - k] = j[k]  # доделать сложение символьное
-    print(long_num)
-    return None
 
 
 # problem 14
@@ -377,6 +363,14 @@ def ispandigital_product(n):
 
 
 # problem 34
+def getpower(n, factorial_list):
+    test, power = n - 1, 1
+    while factorial_list[n - 1] * power > test:
+        test = test * 10 + n - 1
+        power += 1
+    return power
+
+
 def factorial_digit_sum(n, with_zeroes, without_zeroes):
     """Возвращет сумму списков факториалов"""
     result = 0

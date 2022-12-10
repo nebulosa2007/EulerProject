@@ -9,13 +9,9 @@ n = 10
 
 # 1 вариант
 start_time = datetime.now()
-factorial_list = [factorial_self(i) for i in range(10)]
-test, power = 9, 1
-while factorial_list[9] * power > test:
-    test = test * 10 + 9
-    power += 1
+factorial_list = [factorial_self(_) for _ in range(n)]
 curious_numbers = []
-for i in range(3, n ** power):
+for i in range(3, n ** getpower(n, factorial_list)):
     number_list = [int(i) for i in list(str(i))]
     sum_number_list = sum(factorial_list[i] for i in number_list)
     if sum_number_list > i: continue
@@ -26,10 +22,11 @@ print(datetime.now() - start_time)
 
 # 2 вариант
 start_time = datetime.now()
+factorial_list = [factorial_self(_) for _ in range(n)]
 sum_fact_not_0 = [sum(factorial_self(int(c)) 
-                      for c in str(i)) for i in range(10_000)]
+                      for c in str(i)) for i in range(10 ** 4)]
 sum_fact_0 = [sum(factorial_self(int(c)) 
-                  for c in str(i).zfill(4)) for i in range(10_000)]
-print(sum([i for i in range(3, 10 ** power) 
+                  for c in str(i).zfill(4)) for i in range(10 ** 4)]
+print(sum([i for i in range(3, 10 ** getpower(n, factorial_list)) 
           if i == factorial_digit_sum(i, sum_fact_0, sum_fact_not_0)]))
 print(datetime.now() - start_time)

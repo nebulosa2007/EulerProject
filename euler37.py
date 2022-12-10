@@ -21,8 +21,8 @@ print(datetime.now() - start_time)
 # 2 вариант
 start_time = datetime.now()
 c = s = 0
-i = 11
-while c < 11:
+i = n
+while c < n:
     if all(map(isprime, del_digit_left_or_right(i))):
         c += 1
         s += i

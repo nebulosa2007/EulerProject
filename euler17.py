@@ -13,5 +13,5 @@ print(datetime.now() - start_time)
 
 # 2 вариант
 start_time = datetime.now()
-# print(''.join(numerals(999)))
+pass
 print(datetime.now() - start_time)
