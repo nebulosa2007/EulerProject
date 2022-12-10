@@ -27,8 +27,9 @@ for j in range(1, len(numbers[0]) + 1):
         column_numbers.append(int(numbers[i][j * -1]))
     long_number[len(numbers[0]) - j] = sum(column_numbers)
     column_numbers = []
-max_lenght = j - 1 + len(str(long_number[j - 1]))
-total_num = [0 for x in range(max_lenght)]
+else:
+    j -= 1
+total_num = [0] * (j + len(str(long_number[j])))
 for i in long_number.keys():
     for k, j in enumerate(list(str(long_number[i]))):
         total_num[i + k] += int(j)
