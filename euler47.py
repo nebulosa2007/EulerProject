@@ -23,5 +23,7 @@ for i in range(2, len(siege)):
     else:
         counter = 0
         if siege[i] == 0: siege[i::i] = [_ + 1 for _ in siege[i::i]]
+else:
+    exit("Need to encrease siege")
 print(i - n + 1)
 print(datetime.now() - start_time)
