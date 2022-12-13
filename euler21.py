@@ -6,11 +6,9 @@ n = 10_000
 
 # 1 вариант
 start_time = datetime.now()
-print(all_factors_list(20 ** 2))
 amicable_pairs = []
 for x in range(10, n):
     if x not in amicable_pairs:
-        # print(x, all_factors_list(x))
         x_sum_divisors = sum(all_factors_list(x)) - x
         y_sum_divisors = sum(all_factors_list(x_sum_divisors)) - x_sum_divisors
         if y_sum_divisors == x and x != x_sum_divisors:

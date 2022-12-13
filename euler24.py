@@ -7,7 +7,7 @@ n = 1_000_000
 
 # 1 вариант
 start_time = datetime.now()
-print(list(permutations([_ for _ in range(10)], 10))[n - 1])
+print(*list(permutations([_ for _ in range(10)], 10))[n - 1])
 print(datetime.now() - start_time)
 
 # 2 вариант

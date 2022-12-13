@@ -9,7 +9,7 @@ n = 1001
 # 1 вариант
 start_time = datetime.now()
 num = 1
-print(sum(num := num + lyr for lyr in range(2, n, 2) for _ in range(4)) + 1)
+print(sum((num := num + lyr for lyr in range(2, n, 2) for _ in range(4))) + 1)
 print(datetime.now() - start_time)
 
 # 2 вариант
