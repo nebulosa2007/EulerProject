@@ -275,7 +275,7 @@ def msu(rows, n_line):
 # problem 19
 def isleap_year(year):
     """Проверяет високосный ли год"""
-    return year % 400 == 0 or year % 4 == 0 and year % 100 != 0
+    return year % 400 == 0 or (year % 4 == 0 and year % 100 != 0)
 
 
 def counter_prime_weekday(year, weeknum):
