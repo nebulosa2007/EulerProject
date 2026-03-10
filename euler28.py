@@ -4,20 +4,26 @@
 
 from datetime import datetime
 
-n = 1001
 
-# 1 вариант
-start_time = datetime.now()
-num = 1
-print(sum((num := num + lyr for lyr in range(2, n, 2) for _ in range(4))) + 1)
-print(datetime.now() - start_time)
+def euler28():
+    n = 1001
 
-# 2 вариант
-start_time = datetime.now()
-print(sum(map(lambda i: 4 * i ** 2 - 6 * (i - 1), range(3, n + 1, 2))) + 1)
-print(datetime.now() - start_time)
+    # 1 вариант
+    start_time = datetime.now()
+    num = 1
+    print(sum((num := num + lyr for lyr in range(2, n, 2) for _ in range(4))) + 1)
+    print(datetime.now() - start_time)
 
-# 3 вариант
-start_time = datetime.now()
-print((4 * n ** 3 + 3 * n ** 2 + 8 * n - 9) // 6)
-print(datetime.now() - start_time)
+    # 2 вариант
+    start_time = datetime.now()
+    print(sum(map(lambda i: 4 * i ** 2 - 6 * (i - 1), range(3, n + 1, 2))) + 1)
+    print(datetime.now() - start_time)
+
+    # 3 вариант
+    start_time = datetime.now()
+    print((4 * n ** 3 + 3 * n ** 2 + 8 * n - 9) // 6)
+    print(datetime.now() - start_time)
+
+
+if __name__ == "__main__":
+    euler28()

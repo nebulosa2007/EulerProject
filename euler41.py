@@ -4,8 +4,6 @@ from datetime import datetime
 from itertools import permutations
 from functools import lru_cache
 
-n = 9
-
 
 @lru_cache(2 ** 5)
 def isprime(number: int):
@@ -18,20 +16,28 @@ def isprime(number: int):
         k += 1 if a % i == 0 or a % (i + 2) == 0 else 0
     return True if k <= 0 else False
 
-# 1 вариант
-start_time = datetime.now()
-pan_primes = []
-for z in range(n, 1, -1):
-    pan_primes_check = [int(''.join(str(_) for _ in x))
-                        for x in list(permutations(
-                                      [_ for _ in range(1, z + 1)], z))
-                        if isprime(int(''.join(str(_) for _ in x)))]
-    if pan_primes_check != []: pan_primes.append(max(pan_primes_check))
-else:
-    print(max(pan_primes))
-print(datetime.now() - start_time)
 
-# 2 вариант
-start_time = datetime.now()
-pass
-print(datetime.now() - start_time)
+def euler41():
+    n = 9
+
+    # 1 вариант
+    start_time = datetime.now()
+    pan_primes = []
+    for z in range(n, 1, -1):
+        pan_primes_check = [int(''.join(str(_) for _ in x))
+                            for x in list(permutations(
+                                          [_ for _ in range(1, z + 1)], z))
+                            if isprime(int(''.join(str(_) for _ in x)))]
+        if pan_primes_check != []: pan_primes.append(max(pan_primes_check))
+    else:
+        print(max(pan_primes))
+    print(datetime.now() - start_time)
+
+    # 2 вариант
+    start_time = datetime.now()
+    pass
+    print(datetime.now() - start_time)
+
+
+if __name__ == "__main__":
+    euler41()

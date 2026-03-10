@@ -4,16 +4,22 @@
 from datetime import datetime
 from functools import reduce
 
-n = 1_000_000
 
-# 1 вариант
-start_time = datetime.now()
-print(reduce(lambda x, y: x * y,
-             [int(''.join(str(_) for _ in range(n + 1))[_])
-              for _ in [10 ** _ for _ in range(len(str(n)))]]))
-print(datetime.now() - start_time)
+def euler40():
+    n = 1_000_000
 
-# 2 вариант
-start_time = datetime.now()
-pass
-print(datetime.now() - start_time)
+    # 1 вариант
+    start_time = datetime.now()
+    print(reduce(lambda x, y: x * y,
+                 [int(''.join(str(_) for _ in range(n + 1))[_])
+                  for _ in [10 ** _ for _ in range(len(str(n)))]]))
+    print(datetime.now() - start_time)
+
+    # 2 вариант
+    start_time = datetime.now()
+    pass
+    print(datetime.now() - start_time)
+
+
+if __name__ == "__main__":
+    euler40()

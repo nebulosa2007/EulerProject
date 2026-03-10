@@ -4,8 +4,6 @@
 
 from datetime import datetime
 
-n = 143
-
 
 def figurate_number(number, base=None):
     """ Возвращает number-ое многоугольное число по заданной базе угольности"""
@@ -20,15 +18,23 @@ def isfigurate_number(test_number, base=None):
     R = (8 * (base - 2) * test_number + (base - 4) ** 2) ** 0.5
     return ((R + base - 4) / (2 * base - 4)) % 1 == 0
 
-# 1 вариант
-start_time = datetime.now()
-test_number = figurate_number(i := n + 1, base=6)
-while not isfigurate_number(test_number, 5):
-    test_number = figurate_number(i := i + 1, base=6)
-print(figurate_number(i * 2 - 1, 3))
-print(datetime.now() - start_time)
 
-# 2 вариант
-start_time = datetime.now()
-pass
-print(datetime.now() - start_time)
+def euler45():
+    n = 143
+
+    # 1 вариант
+    start_time = datetime.now()
+    test_number = figurate_number(i := n + 1, base=6)
+    while not isfigurate_number(test_number, 5):
+        test_number = figurate_number(i := i + 1, base=6)
+    print(figurate_number(i * 2 - 1, 3))
+    print(datetime.now() - start_time)
+
+    # 2 вариант
+    start_time = datetime.now()
+    pass
+    print(datetime.now() - start_time)
+
+
+if __name__ == "__main__":
+    euler45()

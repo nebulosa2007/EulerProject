@@ -4,8 +4,6 @@
 
 from datetime import datetime
 
-n = 10
-
 
 def sqrt(x):
     """Возвращает максимально близкое число к корню от x"""
@@ -29,22 +27,30 @@ def ispandigital_product(n):
                 return True
     return False
 
-# 1 вариант
-start_time = datetime.now()
-pan_product = {}
-template = [_ for _ in range(1, n)]
-for a in range(99, 1, -1):
-    for b in range(9999, 1, -1):
-        digits = [int(_) for _ in sorted(list(str(a))
-                                         + list(str(b))
-                                         + list(str(a * b)))]
-        if (digits == template and a * b not in pan_product.values()):
-            pan_product[a, b] = a * b
-else:
-    print(sum(sorted(pan_product.values())))
-print(datetime.now() - start_time)
 
-# 2 вариант
-start_time = datetime.now()
-print(sum(i for i in range(1, 10_000) if ispandigital_product(i)))
-print(datetime.now() - start_time)
+def euler32():
+    n = 10
+
+    # 1 вариант
+    start_time = datetime.now()
+    pan_product = {}
+    template = [_ for _ in range(1, n)]
+    for a in range(99, 1, -1):
+        for b in range(9999, 1, -1):
+            digits = [int(_) for _ in sorted(list(str(a))
+                                             + list(str(b))
+                                             + list(str(a * b)))]
+            if (digits == template and a * b not in pan_product.values()):
+                pan_product[a, b] = a * b
+    else:
+        print(sum(sorted(pan_product.values())))
+    print(datetime.now() - start_time)
+
+    # 2 вариант
+    start_time = datetime.now()
+    print(sum(i for i in range(1, 10_000) if ispandigital_product(i)))
+    print(datetime.now() - start_time)
+
+
+if __name__ == "__main__":
+    euler32()

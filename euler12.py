@@ -3,8 +3,6 @@
 from datetime import datetime
 from math import ceil, sqrt
 
-n = 500
-
 
 def all_factors_list(number, justcount=False):
     """Возвращает список делителей заданного числа, либо количество делителей"""
@@ -27,15 +25,23 @@ def figurate_number(number, base=None):
     assert base >= 3
     return int(((base - 2) * number ** 2 - (base - 4) * number) / 2)
 
-# 1 вариант
-start_time = datetime.now()
-i = 1
-while (divisors := all_factors_list(triangle := figurate_number(i, 3), justcount=True)) < n:
-    i += 1
-print(f'{i}-th triangle number: {triangle} with {divisors} divisors')
-print(datetime.now() - start_time)
 
-# 2 вариант
-start_time = datetime.now()
-pass
-print(datetime.now() - start_time)
+def euler12():
+    n = 500
+
+    # 1 вариант
+    start_time = datetime.now()
+    i = 1
+    while (divisors := all_factors_list(triangle := figurate_number(i, 3), justcount=True)) < n:
+        i += 1
+    print(f'{i}-th triangle number: {triangle} with {divisors} divisors')
+    print(datetime.now() - start_time)
+
+    # 2 вариант
+    start_time = datetime.now()
+    pass
+    print(datetime.now() - start_time)
+
+
+if __name__ == "__main__":
+    euler12()

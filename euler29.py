@@ -3,19 +3,25 @@
 
 from datetime import datetime
 
-n = 100
 
-# 1 вариант
-start_time = datetime.now()
-powers = []
-for a in range(2, n + 1):
-    for b in range(2, n + 1):
-        if (x := a ** b) not in powers: powers.append(x)
-print(len(powers))
-print(datetime.now() - start_time)
+def euler29():
+    n = 100
 
-# 2 вариант
-start_time = datetime.now()
-powers = set([a ** b for a in range(2, n + 1) for b in range(2, n + 1)])
-print(len(powers))
-print(datetime.now() - start_time)
+    # 1 вариант
+    start_time = datetime.now()
+    powers = []
+    for a in range(2, n + 1):
+        for b in range(2, n + 1):
+            if (x := a ** b) not in powers: powers.append(x)
+    print(len(powers))
+    print(datetime.now() - start_time)
+
+    # 2 вариант
+    start_time = datetime.now()
+    powers = set([a ** b for a in range(2, n + 1) for b in range(2, n + 1)])
+    print(len(powers))
+    print(datetime.now() - start_time)
+
+
+if __name__ == "__main__":
+    euler29()

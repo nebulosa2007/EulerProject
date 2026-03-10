@@ -3,12 +3,18 @@
 
 from datetime import datetime
 
-# 1 вариант
-start_time = datetime.now()
-pass
-print(datetime.now() - start_time)
 
-# 2 вариант
-start_time = datetime.now()
-pass
-print(datetime.now() - start_time)
+def euler51():
+    # 1 вариант
+    start_time = datetime.now()
+    pass
+    print(datetime.now() - start_time)
+
+    # 2 вариант
+    start_time = datetime.now()
+    pass
+    print(datetime.now() - start_time)
+
+
+if __name__ == "__main__":
+    euler51()

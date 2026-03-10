@@ -6,8 +6,6 @@
 from datetime import datetime
 from requests import get
 
-n = "https://projecteuler.net/project/resources/p022_names.txt"
-
 
 def readmatrix(namefile=None, text=None, mode=None):
     """Возвращает матрицу чисел или слов из файла или переданного текста"""
@@ -32,14 +30,22 @@ def names_points(*names):
                    for j in list(names[i])) * (i + 1)
                for i in range(len(names)))
 
-# 1 вариант
-start_time = datetime.now()
-print(names_points(*sorted(readmatrix("euler22.txt", mode='text'))))
-print(datetime.now() - start_time)
 
-# 2 вариант
-start_time = datetime.now()
-if (response := get(n, timeout=3)).status_code != 200: exit()
-names = sorted(response.content.decode().replace('"', '').split(','))
-print(names_points(*names))
-print(datetime.now() - start_time)
+def euler22():
+    n = "https://projecteuler.net/project/resources/p022_names.txt"
+
+    # 1 вариант
+    start_time = datetime.now()
+    print(names_points(*sorted(readmatrix("euler22.txt", mode='text'))))
+    print(datetime.now() - start_time)
+
+    # 2 вариант
+    start_time = datetime.now()
+    if (response := get(n, timeout=3)).status_code != 200: exit()
+    names = sorted(response.content.decode().replace('"', '').split(','))
+    print(names_points(*names))
+    print(datetime.now() - start_time)
+
+
+if __name__ == "__main__":
+    euler22()

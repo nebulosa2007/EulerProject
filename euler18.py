@@ -5,8 +5,6 @@ from datetime import datetime
 from bs4 import BeautifulSoup as bs
 from requests import get
 
-n = 15
-
 
 def readmatrix(namefile=None, text=None, mode=None):
     """Возвращает матрицу чисел или слов из файла или переданного текста"""
@@ -37,15 +35,23 @@ def get_data(url, tag, n):
     """Возвращает чистый текст по n-ному заданному тегу и url"""
     return bs(get(url, timeout=3).text, 'lxml').find_all(tag)[n].text
 
-# 1 вариант
-start_time = datetime.now()
-matrix = readmatrix("euler18.txt")
-print(msu(matrix, n - 2))
-print(datetime.now() - start_time)
 
-# 2 вариант
-start_time = datetime.now()
-url = 'https://euler.jakumo.org/problems/view/18.html'
-matrix = readmatrix(text=get_data(url, 'p', 4).strip().split("\n"))
-print(msu(matrix, n - 2))
-print(datetime.now() - start_time)
+def euler18():
+    n = 15
+
+    # 1 вариант
+    start_time = datetime.now()
+    matrix = readmatrix("euler18.txt")
+    print(msu(matrix, n - 2))
+    print(datetime.now() - start_time)
+
+    # 2 вариант
+    start_time = datetime.now()
+    url = 'https://euler.jakumo.org/problems/view/18.html'
+    matrix = readmatrix(text=get_data(url, 'p', 4).strip().split("\n"))
+    print(msu(matrix, n - 2))
+    print(datetime.now() - start_time)
+
+
+if __name__ == "__main__":
+    euler18()

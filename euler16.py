@@ -2,14 +2,20 @@
 
 from datetime import datetime
 
-n = 1_000
 
-# 1 вариант
-start_time = datetime.now()
-print(sum(int(_) for _ in list(str(2 ** n))))
-print(datetime.now() - start_time)
+def euler16():
+    n = 1_000
 
-# 2 вариант
-start_time = datetime.now()
-print(sum(map(int, str(2 ** n))))
-print(datetime.now() - start_time)
+    # 1 вариант
+    start_time = datetime.now()
+    print(sum(int(_) for _ in list(str(2 ** n))))
+    print(datetime.now() - start_time)
+
+    # 2 вариант
+    start_time = datetime.now()
+    print(sum(map(int, str(2 ** n))))
+    print(datetime.now() - start_time)
+
+
+if __name__ == "__main__":
+    euler16()

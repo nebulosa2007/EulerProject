@@ -3,8 +3,6 @@
 
 from datetime import datetime
 
-n = 600_851_475_143
-
 
 def prime_factors_list(n):
     """Возвращет список простых множителей заданного числа"""
@@ -17,12 +15,20 @@ def prime_factors_list(n):
     if n != 1: nodarray.append(n)
     return nodarray
 
-# 1 вариант
-start_time = datetime.now()
-print(max([_ for _ in prime_factors_list(n)]))
-print(datetime.now() - start_time)
 
-# 2 вариант
-start_time = datetime.now()
-pass
-print(datetime.now() - start_time)
+def euler03():
+    n = 600_851_475_143
+
+    # 1 вариант
+    start_time = datetime.now()
+    print(max([_ for _ in prime_factors_list(n)]))
+    print(datetime.now() - start_time)
+
+    # 2 вариант
+    start_time = datetime.now()
+    pass
+    print(datetime.now() - start_time)
+
+
+if __name__ == "__main__":
+    euler03()

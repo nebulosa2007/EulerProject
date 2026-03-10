@@ -3,8 +3,6 @@
 
 from datetime import datetime
 
-n = 4
-
 
 def prime_factors_list(n):
     """Возвращет список простых множителей заданного числа"""
@@ -17,25 +15,33 @@ def prime_factors_list(n):
     if n != 1: nodarray.append(n)
     return nodarray
 
-# 1 вариант
-start_time = datetime.now()
-i, counter = 1, 0
-while counter < n:
-    if len(set(prime_factors_list(i := i + 1))) == n: counter += 1
-    else: counter = 0
-print(i - n + 1)
-print(datetime.now() - start_time)
 
-# 2 вариант
-start_time = datetime.now()
-siege = [0] * 150_000
-for i in range(2, len(siege)):
-    if siege[i] == n:
-        if (counter := counter + 1) == n: break
+def euler47():
+    n = 4
+
+    # 1 вариант
+    start_time = datetime.now()
+    i, counter = 1, 0
+    while counter < n:
+        if len(set(prime_factors_list(i := i + 1))) == n: counter += 1
+        else: counter = 0
+    print(i - n + 1)
+    print(datetime.now() - start_time)
+
+    # 2 вариант
+    start_time = datetime.now()
+    siege = [0] * 150_000
+    for i in range(2, len(siege)):
+        if siege[i] == n:
+            if (counter := counter + 1) == n: break
+        else:
+            counter = 0
+            if siege[i] == 0: siege[i::i] = [_ + 1 for _ in siege[i::i]]
     else:
-        counter = 0
-        if siege[i] == 0: siege[i::i] = [_ + 1 for _ in siege[i::i]]
-else:
-    exit("Need to encrease siege")
-print(i - n + 1)
-print(datetime.now() - start_time)
+        exit("Need to encrease siege")
+    print(i - n + 1)
+    print(datetime.now() - start_time)
+
+
+if __name__ == "__main__":
+    euler47()

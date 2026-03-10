@@ -4,8 +4,6 @@
 from datetime import datetime
 from itertools import permutations
 
-n = 4
-
 
 def eratosfen(number):
     """Решето Эратосфена: генерация простых чисел вплоть до заданного числа"""
@@ -27,23 +25,31 @@ def twelve_digit(pan_primes_check):
                         + str(pan_primes_check[j] + delta))
     return False
 
-# 1 вариант
-start_time = datetime.now()
-prime_permutation = []
-primes = [i for i in set(eratosfen(10 ** n)) if i > 999]
-for sets_primes in primes:
-    pr_check = sorted(list(set([x for x in [int(''.join(x))
-                for x in permutations(str(sets_primes))]
-                                         if x in primes])))
-    if len(pr_check) >= 3:
-        if found := int(twelve_digit(pr_check)):
-            if found not in prime_permutation:
-                prime_permutation.append(found)
-else:
-    print(prime_permutation[-1])
-print(datetime.now() - start_time)
 
-# 2 вариант
-start_time = datetime.now()
-pass
-print(datetime.now() - start_time)
+def euler49():
+    n = 4
+
+    # 1 вариант
+    start_time = datetime.now()
+    prime_permutation = []
+    primes = [i for i in set(eratosfen(10 ** n)) if i > 999]
+    for sets_primes in primes:
+        pr_check = sorted(list(set([x for x in [int(''.join(x))
+                    for x in permutations(str(sets_primes))]
+                                         if x in primes])))
+        if len(pr_check) >= 3:
+            if found := int(twelve_digit(pr_check)):
+                if found not in prime_permutation:
+                    prime_permutation.append(found)
+    else:
+        print(prime_permutation[-1])
+    print(datetime.now() - start_time)
+
+    # 2 вариант
+    start_time = datetime.now()
+    pass
+    print(datetime.now() - start_time)
+
+
+if __name__ == "__main__":
+    euler49()

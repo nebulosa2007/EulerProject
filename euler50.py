@@ -5,8 +5,6 @@ from datetime import datetime
 from itertools import count
 from functools import lru_cache
 
-n = 1_000_000
-
 
 def primes(dimension=None):
     """Итерируемая функция генерация простых чисел"""
@@ -29,20 +27,28 @@ def isprime(number: int):
         k += 1 if a % i == 0 or a % (i + 2) == 0 else 0
     return True if k <= 0 else False
 
-# 1 вариант
-start_time = datetime.now()
-con_primes = []
-for i in primes():
-    if sum(con_primes) + i >= n:
-        while not isprime(sum(con_primes)):
-            con_primes = con_primes[1:]
-        break
-    else:
-        con_primes.append(i)
-print(sum(con_primes), len(con_primes))
-print(datetime.now() - start_time)
 
-# 2 вариант
-start_time = datetime.now()
-pass
-print(datetime.now() - start_time)
+def euler50():
+    n = 1_000_000
+
+    # 1 вариант
+    start_time = datetime.now()
+    con_primes = []
+    for i in primes():
+        if sum(con_primes) + i >= n:
+            while not isprime(sum(con_primes)):
+                con_primes = con_primes[1:]
+            break
+        else:
+            con_primes.append(i)
+    print(sum(con_primes), len(con_primes))
+    print(datetime.now() - start_time)
+
+    # 2 вариант
+    start_time = datetime.now()
+    pass
+    print(datetime.now() - start_time)
+
+
+if __name__ == "__main__":
+    euler50()

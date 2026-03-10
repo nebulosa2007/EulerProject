@@ -5,8 +5,6 @@
 from datetime import datetime
 from numpy import array
 
-n = 4
-
 
 def readmatrix(namefile=None, text=None, mode=None):
     """Возвращает матрицу чисел или слов из файла или переданного текста"""
@@ -75,36 +73,44 @@ def get_data(url, tag, n):
     from requests import get
     return bs(get(url, timeout=3).text, 'lxml').find_all(tag)[n].text
 
-# 1 Вариант
-start_time = datetime.now()
-matrix = readmatrix("euler11.txt")
-# Транспонирование матрицы
-matrix_transpose = [[0 for j in range(len(matrix))]
-                    for i in range(len(matrix[0]))]
-for i in range(len(matrix)):
-    for j in range(len(matrix[0])):
-        matrix_transpose[j][i] = matrix[i][j]
 
-print(max(product_multiply(matrix, n)
-          + product_multiply(matrix_transpose, n)
-          + [product_multiply_diagonals(matrix, n)]))
-print(datetime.now() - start_time)
+def euler11():
+    n = 4
 
-# 2 Вариант
-start_time = datetime.now()
-matrix = array(readmatrix("euler11.txt"))
-matrix_transpose = matrix.transpose()
-print(max(product_multiply(matrix, n)
-          + product_multiply(matrix_transpose, n)
-          + [product_multiply_diagonals(matrix, n)]))
-print(datetime.now() - start_time)
+    # 1 Вариант
+    start_time = datetime.now()
+    matrix = readmatrix("euler11.txt")
+    # Транспонирование матрицы
+    matrix_transpose = [[0 for j in range(len(matrix))]
+                        for i in range(len(matrix[0]))]
+    for i in range(len(matrix)):
+        for j in range(len(matrix[0])):
+            matrix_transpose[j][i] = matrix[i][j]
 
-# 3 Вариант
-start_time = datetime.now()
-url = 'https://euler.jakumo.org/problems/view/11.html'
-matrix = array(readmatrix(text=get_data(url, 'p', 1).strip().split("\n")))
-matrix_transpose = matrix.transpose()
-print(max(product_multiply(matrix, n)
-          + product_multiply(matrix_transpose, n)
-          + [product_multiply_diagonals(matrix, n)]))
-print(datetime.now() - start_time)
+    print(max(product_multiply(matrix, n)
+              + product_multiply(matrix_transpose, n)
+              + [product_multiply_diagonals(matrix, n)]))
+    print(datetime.now() - start_time)
+
+    # 2 Вариант
+    start_time = datetime.now()
+    matrix = array(readmatrix("euler11.txt"))
+    matrix_transpose = matrix.transpose()
+    print(max(product_multiply(matrix, n)
+              + product_multiply(matrix_transpose, n)
+              + [product_multiply_diagonals(matrix, n)]))
+    print(datetime.now() - start_time)
+
+    # 3 Вариант
+    start_time = datetime.now()
+    url = 'https://euler.jakumo.org/problems/view/11.html'
+    matrix = array(readmatrix(text=get_data(url, 'p', 1).strip().split("\n")))
+    matrix_transpose = matrix.transpose()
+    print(max(product_multiply(matrix, n)
+              + product_multiply(matrix_transpose, n)
+              + [product_multiply_diagonals(matrix, n)]))
+    print(datetime.now() - start_time)
+
+
+if __name__ == "__main__":
+    euler11()

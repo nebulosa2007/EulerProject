@@ -3,8 +3,6 @@
 from datetime import datetime
 from functools import lru_cache
 
-n = 20
-
 
 def eratosfen(number):
     """Решето Эратосфена: генерация простых чисел вплоть до заданного числа"""
@@ -28,22 +26,30 @@ def isprime(number: int):
         k += 1 if a % i == 0 or a % (i + 2) == 0 else 0
     return True if k <= 0 else False
 
-# 1 Вариант
-start_time = datetime.now()
-result = 1
-for k in set(eratosfen(n)) - {0}:
-    i = 1
-    while k ** (i + 1) < n:
-        i += 1
-    result *= k ** i
-print(result)
-print(datetime.now() - start_time)
 
-# 2 Вариант
-start_time = datetime.now()
-result = 1
-for k in range(n + 1):
-    if isprime(k): result *= k ** max([_ for _ in range(n // 2) if k ** _ < n])
-else:
+def euler05():
+    n = 20
+
+    # 1 Вариант
+    start_time = datetime.now()
+    result = 1
+    for k in set(eratosfen(n)) - {0}:
+        i = 1
+        while k ** (i + 1) < n:
+            i += 1
+        result *= k ** i
     print(result)
-print(datetime.now() - start_time)
+    print(datetime.now() - start_time)
+
+    # 2 Вариант
+    start_time = datetime.now()
+    result = 1
+    for k in range(n + 1):
+        if isprime(k): result *= k ** max([_ for _ in range(n // 2) if k ** _ < n])
+    else:
+        print(result)
+    print(datetime.now() - start_time)
+
+
+if __name__ == "__main__":
+    euler05()

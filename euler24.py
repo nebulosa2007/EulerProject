@@ -4,14 +4,20 @@
 from datetime import datetime
 from itertools import permutations
 
-n = 1_000_000
 
-# 1 вариант
-start_time = datetime.now()
-print(*list(permutations([_ for _ in range(10)], 10))[n - 1])
-print(datetime.now() - start_time)
+def euler24():
+    n = 1_000_000
 
-# 2 вариант
-start_time = datetime.now()
-pass
-print(datetime.now() - start_time)
+    # 1 вариант
+    start_time = datetime.now()
+    print(*list(permutations([_ for _ in range(10)], 10))[n - 1])
+    print(datetime.now() - start_time)
+
+    # 2 вариант
+    start_time = datetime.now()
+    pass
+    print(datetime.now() - start_time)
+
+
+if __name__ == "__main__":
+    euler24()
