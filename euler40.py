@@ -5,14 +5,23 @@ from datetime import datetime
 from functools import reduce
 
 
-def euler40():
+def euler40() -> None:
+    """
+    Решение задачи Эйлера №40.
+
+    Найдите значение произведения цифр числа Чамбертоуна.
+    """
     n = 1_000_000
 
     # 1 вариант
     start_time = datetime.now()
-    print(reduce(lambda x, y: x * y,
-                 [int(''.join(str(_) for _ in range(n + 1))[_])
-                  for _ in [10 ** _ for _ in range(len(str(n)))]]))
+    champernowne = ''.join(str(_) for _ in range(n + 1))
+    positions = [10 ** _ for _ in range(len(str(n)))]
+    result = reduce(
+        lambda x, y: x * y,
+        [int(champernowne[pos]) for pos in positions]
+    )
+    print(result)
     print(datetime.now() - start_time)
 
     # 2 вариант

@@ -5,18 +5,30 @@
 from datetime import datetime
 
 
-def euler28():
+def euler28() -> None:
+    """
+    Решение задачи Эйлера №28.
+
+    Какова сумма чисел в диагоналях спирали 1001 на 1001?
+    """
     n = 1001
 
     # 1 вариант
     start_time = datetime.now()
     num = 1
-    print(sum((num := num + lyr for lyr in range(2, n, 2) for _ in range(4))) + 1)
+    result = sum(
+        (num := num + lyr)
+        for lyr in range(2, n, 2)
+        for _ in range(4)
+    ) + 1
+    print(result)
     print(datetime.now() - start_time)
 
     # 2 вариант
     start_time = datetime.now()
-    print(sum(map(lambda i: 4 * i ** 2 - 6 * (i - 1), range(3, n + 1, 2))) + 1)
+    print(
+        sum(map(lambda i: 4 * i ** 2 - 6 * (i - 1), range(3, n + 1, 2))) + 1
+    )
     print(datetime.now() - start_time)
 
     # 3 вариант

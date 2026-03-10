@@ -2,12 +2,28 @@
 # следующего треугольника euler18.txt
 
 from datetime import datetime
+from typing import List, Optional
+
 from bs4 import BeautifulSoup as bs
 from requests import get
 
 
-def readmatrix(namefile=None, text=None, mode=None):
-    """Возвращает матрицу чисел или слов из файла или переданного текста"""
+def readmatrix(
+    namefile: Optional[str] = None,
+    text: Optional[List[str]] = None,
+    mode: Optional[str] = None
+) -> List:
+    """
+    Возвращает матрицу чисел или слов из файла или переданного текста.
+
+    Args:
+        namefile: Путь к файлу.
+        text: Текст для парсинга.
+        mode: Режим чтения ('text' для слов, None для чисел).
+
+    Returns:
+        Матрица чисел или список слов.
+    """
     matrix = []
     if text is not None:
         for line in range(len(text)):
@@ -23,20 +39,48 @@ def readmatrix(namefile=None, text=None, mode=None):
     return matrix
 
 
-def msu(rows, n_line):
-    """Возвращает максимальную сумму пути по треугольнику"""
+def msu(rows: List[List[int]], n_line: int) -> int:
+    """
+    Возвращает максимальную сумму пути по треугольнику.
+
+    Args:
+        rows: Матрица треугольника.
+        n_line: Номер строки для начала вычислений.
+
+    Returns:
+        Максимальная сумма пути.
+    """
     for i in range(len(rows[n_line])):
-        rows[n_line][i] += max([rows[n_line + 1][i],
-                                rows[n_line + 1][i + 1]])
-    return rows[n_line][0] if len(rows[n_line]) == 1 else msu(rows, n_line - 1)
+        rows[n_line][i] += max(
+            rows[n_line + 1][i],
+            rows[n_line + 1][i + 1]
+        )
+    if len(rows[n_line]) == 1:
+        return rows[n_line][0]
+    return msu(rows, n_line - 1)
 
 
-def get_data(url, tag, n):
-    """Возвращает чистый текст по n-ному заданному тегу и url"""
+def get_data(url: str, tag: str, n: int) -> str:
+    """
+    Возвращает чистый текст по n-ному заданному тегу и url.
+
+    Args:
+        url: URL-адрес страницы.
+        tag: HTML-тег для поиска.
+        n: Индекс элемента.
+
+    Returns:
+        Текстовое содержимое элемента.
+    """
     return bs(get(url, timeout=3).text, 'lxml').find_all(tag)[n].text
 
 
-def euler18():
+def euler18() -> None:
+    """
+    Решение задачи Эйлера №18.
+
+    Найдите максимальную сумму пути от вершины до основания треугольника.
+    """
     n = 15
 
     # 1 вариант

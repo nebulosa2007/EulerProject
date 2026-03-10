@@ -2,12 +2,28 @@
 # Ответ: 5537376230
 
 from datetime import datetime
+from typing import List, Optional
+
 from bs4 import BeautifulSoup as bs
 from requests import get
 
 
-def readmatrix(namefile=None, text=None, mode=None):
-    """Возвращает матрицу чисел или слов из файла или переданного текста"""
+def readmatrix(
+    namefile: Optional[str] = None,
+    text: Optional[List[str]] = None,
+    mode: Optional[str] = None
+) -> List:
+    """
+    Возвращает матрицу чисел или слов из файла или переданного текста.
+
+    Args:
+        namefile: Путь к файлу.
+        text: Текст для парсинга.
+        mode: Режим чтения ('text' для слов, None для чисел).
+
+    Returns:
+        Матрица чисел или список слов.
+    """
     matrix = []
     if text is not None:
         for line in range(len(text)):
@@ -23,23 +39,38 @@ def readmatrix(namefile=None, text=None, mode=None):
     return matrix
 
 
-def get_data(url, tag, n):
-    """Возвращает чистый текст по n-ному заданному тегу и url"""
+def get_data(url: str, tag: str, n: int) -> str:
+    """
+    Возвращает чистый текст по n-ному заданному тегу и url.
+
+    Args:
+        url: URL-адрес страницы.
+        tag: HTML-тег для поиска.
+        n: Индекс элемента.
+
+    Returns:
+        Текстовое содержимое элемента.
+    """
     return bs(get(url, timeout=3).text, 'lxml').find_all(tag)[n].text
 
 
-def euler13():
+def euler13() -> None:
+    """
+    Решение задачи Эйлера №13.
+
+    Найдите первые десять цифр суммы следующих ста 50-значных чисел.
+    """
     n = 10
 
     # 1 вариант
     start_time = datetime.now()
     numbers = readmatrix("euler13.txt")
-    sum_vertical, total, column_numbers = 0, 0, []
+    sum_vertical, total = 0, 0
     for j in range(1, len(numbers[0]) + 1):
         for i in range(len(numbers)):
             sum_vertical += numbers[i][j * -1]
         total += sum_vertical * (10 ** (j - 1))
-        sum_vertical, column_numbers = 0, []
+        sum_vertical = 0
     print(str(total)[0:10])
     print(datetime.now() - start_time)
 
@@ -53,17 +84,15 @@ def euler13():
             column_numbers.append(int(numbers[i][j * -1]))
         long_number[len(numbers[0]) - j] = sum(column_numbers)
         column_numbers = []
-    else:
-        j -= 1
+    j -= 1
     total_num = [0] * (j + len(str(long_number[j])))
     for i in long_number.keys():
-        for k, j in enumerate(list(str(long_number[i]))):
-            total_num[i + k] += int(j)
+        for k, j_val in enumerate(list(str(long_number[i]))):
+            total_num[i + k] += int(j_val)
             if total_num[i + k] > 9:
                 total_num[i + k - 1] += total_num[i + k] // 10
                 total_num[i + k] %= 10
-    else:
-        print(''.join(str(_) for _ in total_num)[:10])
+    print(''.join(str(x) for x in total_num)[:10])
     print(datetime.now() - start_time)
 
 

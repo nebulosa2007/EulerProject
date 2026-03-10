@@ -5,21 +5,38 @@
 from datetime import datetime
 
 
-def sqrt(x):
-    """Возвращает максимально близкое число к корню от x"""
+def sqrt(x: int) -> int:
+    """
+    Возвращает максимально близкое число к корню от x.
+
+    Args:
+        x: Число для вычисления корня.
+
+    Returns:
+        Целочисленный квадратный корень.
+    """
     assert x >= 0
     i = 1
     while i * i <= x:
         i *= 2
     y = 0
     while i > 0:
-        if (y + i) ** 2 <= x: y += i
+        if (y + i) ** 2 <= x:
+            y += i
         i //= 2
     return y
 
 
-def ispandigital_product(n):
-    """Проверяет произведение на пан-цифры"""
+def ispandigital_product(n: int) -> bool:
+    """
+    Проверяет произведение на пан-цифры.
+
+    Args:
+        n: Число для проверки.
+
+    Returns:
+        True если число является пан-цифровым произведением.
+    """
     for i in range(1, sqrt(n) + 1):
         if n % i == 0:
             temp = str(n) + str(i) + str(n // i)
@@ -28,22 +45,28 @@ def ispandigital_product(n):
     return False
 
 
-def euler32():
+def euler32() -> None:
+    """
+    Решение задачи Эйлера №32.
+
+    Найдите сумму всех пан-цифровых произведений.
+    """
     n = 10
 
     # 1 вариант
     start_time = datetime.now()
     pan_product = {}
-    template = [_ for _ in range(1, n)]
+    template = list(range(1, n))
     for a in range(99, 1, -1):
         for b in range(9999, 1, -1):
-            digits = [int(_) for _ in sorted(list(str(a))
-                                             + list(str(b))
-                                             + list(str(a * b)))]
-            if (digits == template and a * b not in pan_product.values()):
+            digits = [
+                int(x) for x in sorted(
+                    list(str(a)) + list(str(b)) + list(str(a * b))
+                )
+            ]
+            if digits == template and a * b not in pan_product.values():
                 pan_product[a, b] = a * b
-    else:
-        print(sum(sorted(pan_product.values())))
+    print(sum(sorted(pan_product.values())))
     print(datetime.now() - start_time)
 
     # 2 вариант

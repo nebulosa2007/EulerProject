@@ -2,10 +2,20 @@
 
 from datetime import datetime
 from functools import reduce
+from typing import List
 
 
-def eratosfen(number):
-    """Решето Эратосфена: генерация простых чисел вплоть до заданного числа"""
+def eratosfen(number: int) -> List[int]:
+    """
+    Решето Эратосфена: генерация простых чисел вплоть до заданного числа.
+
+    Args:
+        number: Верхняя граница диапазона.
+
+    Returns:
+        Список, где индекс - число, значение - 0 для составных,
+        само число для простых.
+    """
     sieve = list(range(number + 1))
     sieve[1] = 0
     for i in sieve:
@@ -15,7 +25,12 @@ def eratosfen(number):
     return sieve
 
 
-def euler10():
+def euler10() -> None:
+    """
+    Решение задачи Эйлера №10.
+
+    Найдите сумму всех простых чисел меньше двух миллионов.
+    """
     n = 2_000_000
 
     # 1 Вариант

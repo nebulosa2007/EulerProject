@@ -6,18 +6,30 @@ from itertools import count
 from re import findall
 
 
-def repeat_inside(text):
-    """Возвращает повторяющуюся подстроку через регулярные выражения"""
+def repeat_inside(text: str) -> str:
+    """
+    Возвращает повторяющуюся подстроку через регулярные выражения.
+
+    Args:
+        text: Строка для поиска повторяющихся подстрок.
+
+    Returns:
+        Самая длинная повторяющаяся подстрока.
+    """
     match = findall(r'(?=((.+?)\2+))', text)
     return max((x[1] for x in match), key=len, default='')
 
 
-def euler26():
+def euler26() -> None:
+    """
+    Решение задачи Эйлера №26.
+
+    Найдите значение d < 1000, для которого 1/d содержит самую длинную
+    повторяющуюся последовательность цифр.
+    """
     n = 1_000
 
-    # 1 вариант
-    """c обычной точностью ответ - неверный. Показан в качестве
-    вариантов поиска подстрок, более частая задача в Питоне"""
+    # 1 вариант (с обычной точностью ответ - неверный)
     start_time = datetime.now()
     patterns = []
     for x in range(1, n):
@@ -36,19 +48,15 @@ def euler26():
         while x % 5 == 0:
             x //= 5
         if x != 1:
-            period = next(i for i in count(1) if 10**i % x == 1)
+            period = next(i for i in count(1) if 10 ** i % x == 1)
             ans[x] = period
 
     max_period, denominator = ans[1], 1
     for x in ans:
-        if ans[x] > max_period: max_period, denominator = ans[x], x
-    else:
-        print(denominator, max_period)
-    # or
+        if ans[x] > max_period:
+            max_period, denominator = ans[x], x
+    print(denominator, max_period)
     print({k: v for k, v in ans.items() if v == max(ans.values())})
-    # or
-    print({x: y for x, y in filter(lambda x: ans[x[0]] == max(ans.values()),
-                                   ans.items())})
     print(datetime.now() - start_time)
 
 

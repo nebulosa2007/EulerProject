@@ -4,7 +4,12 @@
 from datetime import datetime
 
 
-def euler29():
+def euler29() -> None:
+    """
+    Решение задачи Эйлера №29.
+
+    Сколько различных членов имеет последовательность a^b?
+    """
     n = 100
 
     # 1 вариант
@@ -12,13 +17,15 @@ def euler29():
     powers = []
     for a in range(2, n + 1):
         for b in range(2, n + 1):
-            if (x := a ** b) not in powers: powers.append(x)
+            x = a ** b
+            if x not in powers:
+                powers.append(x)
     print(len(powers))
     print(datetime.now() - start_time)
 
     # 2 вариант
     start_time = datetime.now()
-    powers = set([a ** b for a in range(2, n + 1) for b in range(2, n + 1)])
+    powers = {a ** b for a in range(2, n + 1) for b in range(2, n + 1)}
     print(len(powers))
     print(datetime.now() - start_time)
 

@@ -4,11 +4,27 @@
 # Какова сумма очков имен в файле?
 
 from datetime import datetime
+from typing import List, Optional
+
 from requests import get
 
 
-def readmatrix(namefile=None, text=None, mode=None):
-    """Возвращает матрицу чисел или слов из файла или переданного текста"""
+def readmatrix(
+    namefile: Optional[str] = None,
+    text: Optional[List[str]] = None,
+    mode: Optional[str] = None
+) -> List:
+    """
+    Возвращает матрицу чисел или слов из файла или переданного текста.
+
+    Args:
+        namefile: Путь к файлу.
+        text: Текст для парсинга.
+        mode: Режим чтения ('text' для слов, None для чисел).
+
+    Returns:
+        Матрица чисел или список слов.
+    """
     matrix = []
     if text is not None:
         for line in range(len(text)):
@@ -24,14 +40,28 @@ def readmatrix(namefile=None, text=None, mode=None):
     return matrix
 
 
-def names_points(*names):
-    """Возвращает сумму очков отсортированных имен"""
-    return sum(sum(ord(j) - 64
-                   for j in list(names[i])) * (i + 1)
-               for i in range(len(names)))
+def names_points(*names: str) -> int:
+    """
+    Возвращает сумму очков отсортированных имен.
+
+    Args:
+        *names: Имена для подсчета очков.
+
+    Returns:
+        Сумма очков всех имен.
+    """
+    return sum(
+        sum(ord(j) - 64 for j in names[i]) * (i + 1)
+        for i in range(len(names))
+    )
 
 
-def euler22():
+def euler22() -> None:
+    """
+    Решение задачи Эйлера №22.
+
+    Какова сумма очков имен в файле?
+    """
     n = "https://projecteuler.net/project/resources/p022_names.txt"
 
     # 1 вариант
@@ -41,7 +71,9 @@ def euler22():
 
     # 2 вариант
     start_time = datetime.now()
-    if (response := get(n, timeout=3)).status_code != 200: exit()
+    response = get(n, timeout=3)
+    if response.status_code != 200:
+        exit()
     names = sorted(response.content.decode().replace('"', '').split(','))
     print(names_points(*names))
     print(datetime.now() - start_time)

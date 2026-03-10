@@ -4,16 +4,32 @@
 from datetime import datetime
 from functools import reduce
 from itertools import takewhile
+from typing import Generator
 
 
-def fibonacci(f1=0, f2=1):
-    """Итерируемая функция вычисления следующего числа Фибоначчи"""
+def fibonacci(f1: int = 0, f2: int = 1) -> Generator[int, None, None]:
+    """
+    Итерируемая функция вычисления следующего числа Фибоначчи.
+
+    Args:
+        f1: Первое число последовательности.
+        f2: Второе число последовательности.
+
+    Yields:
+        Очередное число Фибоначчи.
+    """
     while True:
         yield f1
         f1, f2 = f2, f1 + f2
 
 
-def euler02():
+def euler02() -> None:
+    """
+    Решение задачи Эйлера №2.
+
+    Найдите сумму всех четных элементов ряда Фибоначчи,
+    которые не превышают четыре миллиона.
+    """
     n = 4_000_000
 
     # 1 Вариант
@@ -26,10 +42,10 @@ def euler02():
 
     # 2 Вариант
     start_time = datetime.now()
-    print(reduce(lambda x, y: x + y,
-                 filter(lambda s: s % 2 == 0,
-                        (takewhile(lambda f: f < n,
-                                   fibonacci())))))
+    print(reduce(
+        lambda x, y: x + y,
+        filter(lambda s: s % 2 == 0, takewhile(lambda f: f < n, fibonacci()))
+    ))
     print(datetime.now() - start_time)
 
 

@@ -5,12 +5,17 @@ from datetime import datetime
 from itertools import permutations
 
 
-def euler24():
+def euler24() -> None:
+    """
+    Решение задачи Эйлера №24.
+
+    Какова миллионная словарная перестановка из цифр 0-9?
+    """
     n = 1_000_000
 
     # 1 вариант
     start_time = datetime.now()
-    print(*list(permutations([_ for _ in range(10)], 10))[n - 1])
+    print(*list(permutations(range(10), 10))[n - 1])
     print(datetime.now() - start_time)
 
     # 2 вариант

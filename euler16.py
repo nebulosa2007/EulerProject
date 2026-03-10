@@ -3,12 +3,17 @@
 from datetime import datetime
 
 
-def euler16():
+def euler16() -> None:
+    """
+    Решение задачи Эйлера №16.
+
+    Какова сумма цифр числа 2 в степени 1000?
+    """
     n = 1_000
 
     # 1 вариант
     start_time = datetime.now()
-    print(sum(int(_) for _ in list(str(2 ** n))))
+    print(sum(int(x) for x in str(2 ** n)))
     print(datetime.now() - start_time)
 
     # 2 вариант
