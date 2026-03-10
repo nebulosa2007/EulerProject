@@ -3,9 +3,23 @@
 # n → n/2 (n - четное)
 # n → 3n + 1 (n - нечетное)
 
-from project_euler_defs import *
+from datetime import datetime
+from functools import lru_cache
 
 n = 1_000_000
+
+
+@lru_cache(2 ** 20)
+def collatz(number: int):
+    """Возвращает следующее число Коллатца"""
+    return int(number / 2) if number % 2 == 0 else number * 3 + 1
+
+
+def collatz_recursion(number, counter):
+    """Возвращает счётчик шагов итого в рекурсивном алгоритме Коллатца"""
+    if number == 1: return counter
+    if number % 2 == 0: return collatz_recursion(int(number / 2), counter + 1)
+    else: return collatz_recursion(3 * number + 1, counter + 1)
 
 # 1 вариант
 start_time = datetime.now()

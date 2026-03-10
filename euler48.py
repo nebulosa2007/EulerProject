@@ -1,6 +1,6 @@
 # Найдите последние десять цифр суммы 1^1 + 2^2 + 3^3 + ... + 1000^1000.
 
-from project_euler_defs import *
+from datetime import datetime
 
 n = 10
 

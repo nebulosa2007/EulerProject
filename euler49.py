@@ -1,9 +1,31 @@
 # Какое 12-значное число образуется, если объединить три члена
 # этой прогрессии?
 
-from project_euler_defs import *
+from datetime import datetime
+from itertools import permutations
 
 n = 4
+
+
+def eratosfen(number):
+    """Решето Эратосфена: генерация простых чисел вплоть до заданного числа"""
+    sieve = list(range(number + 1))
+    sieve[1] = 0
+    for i in sieve:
+        if i > 1:
+            for j in range(2 * i, len(sieve), i):
+                sieve[j] = 0
+    return sieve
+
+
+def twelve_digit(pan_primes_check):
+    for i in range(len(pan_primes_check)):
+        for j in range(i + 1, len(pan_primes_check)):
+            delta = pan_primes_check[j] - pan_primes_check[i]
+            if pan_primes_check[j] + delta in pan_primes_check:
+                return (str(pan_primes_check[i]) + str(pan_primes_check[j])
+                        + str(pan_primes_check[j] + delta))
+    return False
 
 # 1 вариант
 start_time = datetime.now()

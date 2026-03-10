@@ -1,9 +1,14 @@
 # Найдите самый большой палиндром,
 # полученный умножением двух трехзначных чисел.
 
-from project_euler_defs import *
+from datetime import datetime
 
 n = 1_000
+
+
+def check_palindrom(number):
+    """Проверка заданного числа на палиндром"""
+    return True if number == number[::-1] else False
 
 # 1 Вариант
 start_time = datetime.now()

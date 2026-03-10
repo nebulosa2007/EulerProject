@@ -3,9 +3,41 @@
 # преобразовывая каждую букву в число, соответствующее ее порядковому номеру
 # в алфавите и складывая эти значения
 
-from project_euler_defs import *
+from datetime import datetime
+from requests import get
 
 n = "https://projecteuler.net/project/resources/p042_words.txt"
+
+
+def readmatrix(namefile=None, text=None, mode=None):
+    """Возвращает матрицу чисел или слов из файла или переданного текста"""
+    matrix = []
+    if text is not None:
+        for line in range(len(text)):
+            matrix.append([int(i) for i in text[line].split(" ")])
+    elif mode is None:
+        with open(namefile) as f:
+            for line in f:
+                matrix.append([int(i) for i in line.rstrip('\n').split()])
+    elif mode == 'text':
+        with open(namefile) as f:
+            for line in f:
+                matrix = line.replace('"', '').split(',')
+    return matrix
+
+
+def figurate_number(number, base=None):
+    """ Возвращает number-ое многоугольное число по заданной базе угольности"""
+    assert base >= 3
+    return int(((base - 2) * number ** 2 - (base - 4) * number) / 2)
+
+
+def isfigurate_number(test_number, base=None):
+    """ Проверяет является ли число многоугольным по заданной базе
+    угольности"""
+    assert base >= 3
+    R = (8 * (base - 2) * test_number + (base - 4) ** 2) ** 0.5
+    return ((R + base - 4) / (2 * base - 4)) % 1 == 0
 
 # 1 вариант
 start_time = datetime.now()

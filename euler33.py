@@ -4,7 +4,8 @@
 # дроби (числитель и знаменатель дроби не имеют общих сомножителей).
 # Найдите знаменатель этой дроби.
 
-from project_euler_defs import *
+from datetime import datetime
+from math import gcd
 
 n = 100
 

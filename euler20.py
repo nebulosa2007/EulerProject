@@ -1,8 +1,16 @@
 # Найдите сумму цифр в числе 100!
 
-from project_euler_defs import *
+from datetime import datetime
+from functools import reduce, lru_cache
+from math import factorial
 
 n = 100
+
+
+@lru_cache(2 ** 5)
+def factorial_self(number):
+    """Возвращает факториал заданного числа"""
+    return 1 if number ==0 else reduce(lambda x, y: x * y, range(1, number + 1))
 
 # 1 вариант
 start_time = datetime.now()

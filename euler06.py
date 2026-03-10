@@ -1,7 +1,8 @@
 # Найдите разность между суммой квадратов и квадратом суммы первых
 # ста натуральных чисел.
 
-from project_euler_defs import *
+from datetime import datetime
+from functools import reduce
 
 n = 100
 

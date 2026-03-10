@@ -1,8 +1,22 @@
 # Какое существует наибольшее n-значное пан-цифровое простое число?
 
-from project_euler_defs import *
+from datetime import datetime
+from itertools import permutations
+from functools import lru_cache
 
 n = 9
+
+
+@lru_cache(2 ** 5)
+def isprime(number: int):
+    """Проверка числа на простоту перебором делителей"""
+    if number in {2, 3, 5, 7}: return True
+    if number < 2 or number % 2 == 0: return False
+    if number % 3 == 0 or number % 5 == 0: return False
+    a, k = number, 0
+    for i in range(5, int(number**0.5), 6):
+        k += 1 if a % i == 0 or a % (i + 2) == 0 else 0
+    return True if k <= 0 else False
 
 # 1 вариант
 start_time = datetime.now()

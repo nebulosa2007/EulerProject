@@ -1,9 +1,33 @@
 # Найдите наибольшее произведение тринадцати последовательных цифр в
 # данном 1000-значном числе.
 
-from project_euler_defs import *
+from datetime import datetime
+from functools import reduce
+from math import prod
+from bs4 import BeautifulSoup as bs
+from requests import get
 
 n = 13
+
+
+def get_data(url, tag, n):
+    """Возвращает чистый текст по n-ному заданному тегу и url"""
+    return bs(get(url, timeout=3).text, 'lxml').find_all(tag)[n].text
+
+
+def multiply_numbers(*numset):
+    """Возвращет произведение чисел в заданной выборке"""
+    return reduce((lambda x, y: int(x) * int(y)), numset)
+
+
+def loadfiletolistnumbers(namefile):
+    """Возвращает список из чисел заданного файла"""
+    number = []
+    with open(namefile) as f:
+        while True:
+            if (c := f.read(1)) == '': break
+            elif c != '\n': number.append(c)
+    return number
 
 # 1 Вариант
 number = loadfiletolistnumbers('euler08.txt')

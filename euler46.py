@@ -1,9 +1,20 @@
 # Каково наименьшее нечетное составное число, которое нельзя записать
 # в виде суммы простого числа и удвоенного квадрата?
 
-from project_euler_defs import *
+from datetime import datetime
 
 n = 10_000
+
+
+def eratosfen(number):
+    """Решето Эратосфена: генерация простых чисел вплоть до заданного числа"""
+    sieve = list(range(number + 1))
+    sieve[1] = 0
+    for i in sieve:
+        if i > 1:
+            for j in range(2 * i, len(sieve), i):
+                sieve[j] = 0
+    return sieve
 
 # 1 вариант
 start_time = datetime.now()

@@ -1,9 +1,18 @@
 # Найдите сумму всех четных элементов ряда Фибоначчи, которые не превышают
 # четыре миллиона.
 
-from project_euler_defs import *
+from datetime import datetime
+from functools import reduce
+from itertools import takewhile
 
 n = 4_000_000
+
+
+def fibonacci(f1=0, f2=1):
+    """Итерируемая функция вычисления следующего числа Фибоначчи"""
+    while True:
+        yield f1
+        f1, f2 = f2, f1 + f2
 
 # 1 Вариант
 start_time = datetime.now()

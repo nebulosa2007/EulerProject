@@ -1,7 +1,7 @@
 # Сколько различных членов имеет последовательность a^b для
 # 2 ≤ a ≤ 100 и 2 ≤ b ≤ 100?
 
-from project_euler_defs import *
+from datetime import datetime
 
 n = 100
 

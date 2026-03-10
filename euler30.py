@@ -1,9 +1,14 @@
 # Найдите сумму всех чисел, которые могут быть записаны в виде
 # суммы пятых степеней их цифр.
 
-from project_euler_defs import *
+from datetime import datetime
 
 n = 5  # n > 1
+
+
+def sum_power_of_digits(x, n):
+    """Возвращает сумму цифр в заданной степени"""
+    return sum(int(z) ** n for z in list(str(x)))
 
 # 1 вариант
 start_time = datetime.now()

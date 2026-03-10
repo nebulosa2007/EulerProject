@@ -1,7 +1,7 @@
 # Существует только одна тройка Пифагора, для которой a + b + c = 1000.
 # Найдите произведение abc.
 
-from project_euler_defs import *
+from datetime import datetime
 
 n = 1_000
 

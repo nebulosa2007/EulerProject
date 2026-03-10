@@ -2,9 +2,32 @@
 # "множимое × множитель = произведение" можно записать цифрами от 1 до 9,
 # используя каждую цифру только один раз.
 
-from project_euler_defs import *
+from datetime import datetime
 
 n = 10
+
+
+def sqrt(x):
+    """Возвращает максимально близкое число к корню от x"""
+    assert x >= 0
+    i = 1
+    while i * i <= x:
+        i *= 2
+    y = 0
+    while i > 0:
+        if (y + i) ** 2 <= x: y += i
+        i //= 2
+    return y
+
+
+def ispandigital_product(n):
+    """Проверяет произведение на пан-цифры"""
+    for i in range(1, sqrt(n) + 1):
+        if n % i == 0:
+            temp = str(n) + str(i) + str(n // i)
+            if "".join(sorted(temp)) == "123456789":
+                return True
+    return False
 
 # 1 вариант
 start_time = datetime.now()

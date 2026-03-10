@@ -1,9 +1,16 @@
 # Каков порядковый номер первого члена последовательности
 # Фибоначчи, содержащего 1000 цифр?
 
-from project_euler_defs import *
+from datetime import datetime
 
 n = 1_000
+
+
+def fibonacci(f1=0, f2=1):
+    """Итерируемая функция вычисления следующего числа Фибоначчи"""
+    while True:
+        yield f1
+        f1, f2 = f2, f1 + f2
 
 # 1 вариант
 start_time = datetime.now()

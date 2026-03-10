@@ -1,9 +1,26 @@
 # Найдите сумму всех положительных чисел, которые не могут быть записаны как
 # сумма двух избыточных чисел.
 
-from project_euler_defs import *
+from datetime import datetime
+from math import ceil, sqrt
 
 n = 28_123
+
+
+def all_factors_list(number, justcount=False):
+    """Возвращает список делителей заданного числа, либо количество делителей"""
+    divisor, divisor_list = 2, [1, number]
+    for i in range(2, ceil(sqrt(number)) + 1):
+        if number % i == 0:
+            if justcount:
+                divisor += 2
+            else: 
+                divisor_list.append(i)
+                divisor_list.append(number // i)
+    if justcount:
+        return divisor - 1 if ceil(sqrt(number)) ** 2 == number else divisor
+    else:
+        return divisor_list[:-1] if ceil(sqrt(number)) ** 2 == number else divisor_list
 
 # 1 вариант
 start_time = datetime.now()

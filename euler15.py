@@ -1,8 +1,22 @@
 # Сколько существует таких маршрутов в сетке 20×20?
 
-from project_euler_defs import *
+from datetime import datetime
+from functools import lru_cache
+from math import factorial
 
 n = 20
+
+memory = {(1, 0): 1, (0, 1): 1}
+
+
+@lru_cache(2 ** 20)
+def func(x, y):
+    """Возвращает словарь/матрицу весов путей"""
+    if (x, y) not in memory:
+        if x == 0: memory[(x, y)] = func(x, y - 1)
+        elif y == 0: memory[(x, y)] = func(x - 1, y)
+        else: memory[(x, y)] = func(x - 1, y) + func(x, y - 1)
+    return memory[(x, y)]
 
 # 1 вариант
 start_time = datetime.now()

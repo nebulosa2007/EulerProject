@@ -1,9 +1,17 @@
 # Найдите значение d < 1000, для которого 1/d в десятичном виде
 # содержит самую длинную повторяющуюся последовательность цифр.
 
-from project_euler_defs import *
+from datetime import datetime
+from itertools import count
+from re import findall
 
 n = 1_000
+
+
+def repeat_inside(text):
+    """Возвращает повторяющуюся подстроку через регулярные выражения"""
+    match = findall(r'(?=((.+?)\2+))', text)
+    return max((x[1] for x in match), key=len, default='')
 
 # 1 вариант
 """c обычной точностью ответ - неверный. Показан в качестве

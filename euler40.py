@@ -1,7 +1,8 @@
 # Найдите значение следующего выражения числа Чамбертоуна:
 # d1 × d10 × d100 × d1000 × d10000 × d100000 × d1000000
 
-from project_euler_defs import *
+from datetime import datetime
+from functools import reduce
 
 n = 1_000_000
 

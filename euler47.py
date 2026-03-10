@@ -1,9 +1,21 @@
 # Найдите первые четыре последовательных числа, каждое из которых имеет четыре
 # отличных друг от друга простых множителя. Каким будет первое число?
 
-from project_euler_defs import *
+from datetime import datetime
 
 n = 4
+
+
+def prime_factors_list(n):
+    """Возвращет список простых множителей заданного числа"""
+    divisor, nodarray = 2, []
+    while divisor ** 2 <= n:
+        if n % divisor == 0:
+            n //= divisor
+            nodarray.append(divisor)
+        else: divisor += 1
+    if n != 1: nodarray.append(n)
+    return nodarray
 
 # 1 вариант
 start_time = datetime.now()

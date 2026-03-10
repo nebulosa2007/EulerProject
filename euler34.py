@@ -3,9 +3,33 @@
 # цифр. Примечание: поскольку 1! = 1 и 2! = 2 не являются суммами, учитывать
 # их не следует.
 
-from project_euler_defs import *
+from datetime import datetime
+from functools import reduce, lru_cache
 
 n = 10
+
+
+@lru_cache(2 ** 5)
+def factorial_self(number):
+    """Возвращает факториал заданного числа"""
+    return 1 if number ==0 else reduce(lambda x, y: x * y, range(1, number + 1))
+
+
+def getpower(n, factorial_list):
+    test, power = n - 1, 1
+    while factorial_list[n - 1] * power > test:
+        test = test * 10 + n - 1
+        power += 1
+    return power
+
+
+def factorial_digit_sum(n, with_zeroes, without_zeroes):
+    """Возвращет сумму списков факториалов"""
+    result = 0
+    while n >= 10_000:
+        result += with_zeroes[n % 10_000]
+        n //= 10_000
+    return result + without_zeroes[n]
 
 # 1 вариант
 start_time = datetime.now()

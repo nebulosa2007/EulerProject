@@ -2,7 +2,7 @@
 # считаем суммы диагоналей. Какова сумма чисел в диагоналях спирали
 # 1001 на 1001, образованной таким же способом?
 
-from project_euler_defs import *
+from datetime import datetime
 
 n = 1001
 

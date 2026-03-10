@@ -1,9 +1,33 @@
 # Найдите первые десять цифр суммы следующих ста 50-значных чисел.
 # Ответ: 5537376230
 
-from project_euler_defs import *
+from datetime import datetime
+from bs4 import BeautifulSoup as bs
+from requests import get
 
 n = 10
+
+
+def readmatrix(namefile=None, text=None, mode=None):
+    """Возвращает матрицу чисел или слов из файла или переданного текста"""
+    matrix = []
+    if text is not None:
+        for line in range(len(text)):
+            matrix.append([int(i) for i in text[line].split(" ")])
+    elif mode is None:
+        with open(namefile) as f:
+            for line in f:
+                matrix.append([int(i) for i in line.rstrip('\n').split()])
+    elif mode == 'text':
+        with open(namefile) as f:
+            for line in f:
+                matrix = line.replace('"', '').split(',')
+    return matrix
+
+
+def get_data(url, tag, n):
+    """Возвращает чистый текст по n-ному заданному тегу и url"""
+    return bs(get(url, timeout=3).text, 'lxml').find_all(tag)[n].text
 
 # 1 вариант
 start_time = datetime.now()

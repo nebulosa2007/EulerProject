@@ -1,7 +1,8 @@
 # Какова миллионная словарная перестановка из цифр
 # 0, 1, 2, 3, 4, 5, 6, 7, 8 и 9?
 
-from project_euler_defs import *
+from datetime import datetime
+from itertools import permutations
 
 n = 1_000_000
 

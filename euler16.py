@@ -1,6 +1,6 @@
 # Какова сумма цифр числа 2 в степени 1000?
 
-from project_euler_defs import *
+from datetime import datetime
 
 n = 1_000
 
